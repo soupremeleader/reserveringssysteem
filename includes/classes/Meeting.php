@@ -19,7 +19,7 @@ class Meeting
     }
 
     /**
-     *  Returns meeting based on timeslot
+     *  Finds meeting in database based on timeslot.
      *
      * @param Timeslot $timeslot
      * @return Meeting|null

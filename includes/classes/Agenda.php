@@ -51,4 +51,23 @@ class Agenda
     public function findMeeting(string $name): ?Meeting {
         return null;
     }
+
+    /**
+     * Sort meetings based on date.
+     *
+     * @param array $meetings
+     * $return Meeting[]
+     */
+    public function sortMeetings(array $meetings): array {
+        return $meetings;
+    }
+
+    /**
+     * Sort timeslots based on date.
+     * @param array $timeslots
+     * @return array
+     */
+    public function sortTimeslots(array $timeslots): array {
+        return $timeslots;
+    }
 }

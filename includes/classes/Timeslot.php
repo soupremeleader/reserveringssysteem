@@ -32,7 +32,7 @@ class Timeslot
     }
 
     /**
-     * Return timeslot.
+     * Finds timeslot in database.
      *
      * @return Timeslot|null
      */
