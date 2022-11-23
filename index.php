@@ -2,30 +2,21 @@
 <!doctype html>
 <html lang="en">
 
-<style>
-    table, tr, td {
-        border: 1px solid black;
-    }
-
-    .invisible {
-        display:none;
-    }
-</style>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="includes/stylesheets/index.scss">
     <title>Document</title>
 </head>
 <body>
 <header>
     <button id="todayBtn">Vandaag</button>
-    <div style="display:flex">
+    <div>
         <button id="prevBtn" data-offset="-1"> <-</button>
         <div>
-            <div style="display:flex">
+            <div>
                 <p id="weeknr"></p>
                 <button id="weeknrSelect">V</button>
                 <button id="weeknrExit">X</button>
@@ -47,8 +38,38 @@
         <tbody id="tbodyCal"></tbody>
         <tfoot id="theadCal"></tfoot>
     </table>
-
+    <button id="addMeetBtn">+</button>
 </main>
+
+<section id="addMeetSection">
+    <h1>Nieuwe afspraak toevoegen</h1>
+    <button id="exitMeetBtn">X</button>
+    <form>
+        <label for="meetClient">Klant </label>
+        <input type="text" id="meetClient" name="meetClient" placeholder="naam klant"/>
+        <input type="button" id="addClientBtn" value="+"/><br/>
+        <label for="beginTimeslot">Van</label>
+        <input type="time" name="meetBeginTime" id="beginTimeslot"/>
+        <label for="endTimeslot">tot</label>
+        <input type="time" name="meetEndTime" id="endTimeslot"/>
+        <input type="button" value="OK" name="submitMeeting"/><br/>
+        <label for="notes">Extra notities</label><br/>
+        <textarea name="meetNotes" rows="4" cols="50" placeholder="Type notities hier..." id="notes"></textarea><br/>
+    </form>
+</section>
+<section id="addClientSection">
+    <h1>Nieuwe klant toevoegen</h1>
+    <button id="exitClientBtn">X</button>
+    <form>
+        <label for="clientName">Naam klant:</label>
+        <input type="text" id="clientName" name="clientName" placeholder="Naam klant"/><br/>
+        <label for="clientPhone">Telefoonnummer: </label>
+        <input type="tel" id="clientPhone" name="clientPhone" pattern="[0-9]{10}"/><br/>
+        <label for="clientEmail">E-mail: </label>
+        <input type="email" id="clientEmail" name="clientEmail"/><br/>
+        <input type="button" value="Voeg toe"/>
+    </form>
+</section>
 </body>
 </html>
 <script>
@@ -148,6 +169,22 @@
         offsetWeek(0);
     }
 
+    function addMeeting() {
+        document.getElementById("addMeetSection").classList.remove("invisible");
+    }
+
+    function exitMeeting() {
+        document.getElementById("addMeetSection").classList.add("invisible");
+    }
+
+    function addClient() {
+        document.getElementById("addClientSection").classList.remove("invisible");
+    }
+
+    function exitClient() {
+        document.getElementById("addClientSection").classList.add("invisible");
+    }
+
     let prevBtn = document.getElementById("prevBtn");
     let nextBtn = document.getElementById("nextBtn");
 
@@ -156,6 +193,11 @@
     let weeknrSubmit = document.getElementById("weeknrSubmit");
 
     let todayBtn = document.getElementById("todayBtn");
+
+    let addMeetBtn = document.getElementById("addMeetBtn");
+    let exitMeetBtn = document.getElementById("exitMeetBtn");
+    let addClientBtn = document.getElementById("addClientBtn");
+    let exitClientBtn = document.getElementById("exitClientBtn");
 
     prevBtn.addEventListener('click', submitPrevNext);
     nextBtn.addEventListener('click', submitPrevNext);
@@ -166,8 +208,17 @@
 
     todayBtn.addEventListener('click', resetOffset);
 
+    addMeetBtn.addEventListener('click', addMeeting);
+    exitMeetBtn.addEventListener('click', exitMeeting);
+    addClientBtn.addEventListener('click', addClient);
+    exitClientBtn.addEventListener('click', exitClient);
+
+
     calendar(0);
 
     document.getElementById("weeknrExit").classList.add("invisible");
     document.getElementById("weeknrForm").classList.add("invisible");
+
+    document.getElementById("addMeetSection").classList.add("invisible");
+    document.getElementById("addClientSection").classList.add("invisible");
 </script>
