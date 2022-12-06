@@ -1,4 +1,4 @@
-<?php
+<?php namespace RS;
 
 class Meeting
 {

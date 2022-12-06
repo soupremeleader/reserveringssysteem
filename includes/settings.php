@@ -1,6 +1,9 @@
 <?php
-//Define custom constants to use with project
-define('DATA_PATH', dirname(__FILE__) . '/data/');
+
+const DB_HOST = 'localhost:33006';
+const DB_USER = 'root';
+const DB_PASS = '';
+const DB_NAME = 'reserveringssysteem';
 
 //Custom error handler, so every error will throw a custom ErrorException
 set_error_handler(function ($severity, $message, $file, $line) {

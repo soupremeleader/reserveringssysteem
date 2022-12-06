@@ -1,4 +1,16 @@
-<?php ?>
+<?php
+require_once 'includes/init.php';
+
+if (isset($_POST['clientSbmt'])) {
+    $clientName = $_POST['clientName'];
+    $clientPhone = $_POST['clientPhone'];
+    $clientEmail = $_POST['clientEmail'];
+
+    $newClient = $connection->prepare("INSERT INTO `clients` (`name`, `phone_number`, `email`) VALUES (:clientName, :clientPhone, :clientEmail)");
+    $newClient->execute([':clientName' => $clientName, ':clientPhone' => $clientPhone, ':clientEmail' => $clientEmail]);
+    print_r($connection->query("SELECT * FROM `clients`")->fetchAll(PDO::FETCH_CLASS, "\\RS\\Client"));
+}
+?>
 <!doctype html>
 <html lang="en">
 
@@ -52,7 +64,7 @@
         <input type="time" name="meetBeginTime" id="beginTimeslot"/>
         <label for="endTimeslot">tot</label>
         <input type="time" name="meetEndTime" id="endTimeslot"/>
-        <input type="button" value="OK" name="submitMeeting"/><br/>
+        <input type="submit" value="OK" name="submitMeeting"/><br/>
         <label for="notes">Extra notities</label><br/>
         <textarea name="meetNotes" rows="4" cols="50" placeholder="Type notities hier..." id="notes"></textarea><br/>
     </form>
@@ -60,14 +72,14 @@
 <section id="addClientSection">
     <h1>Nieuwe klant toevoegen</h1>
     <button id="exitClientBtn">X</button>
-    <form>
+    <form method="post">
         <label for="clientName">Naam klant:</label>
         <input type="text" id="clientName" name="clientName" placeholder="Naam klant"/><br/>
         <label for="clientPhone">Telefoonnummer: </label>
         <input type="tel" id="clientPhone" name="clientPhone" pattern="[0-9]{10}"/><br/>
         <label for="clientEmail">E-mail: </label>
         <input type="email" id="clientEmail" name="clientEmail"/><br/>
-        <input type="button" value="Voeg toe"/>
+        <input type="submit" name="clientSbmt" value="Voeg toe"/>
     </form>
 </section>
 </body>

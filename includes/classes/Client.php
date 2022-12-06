@@ -1,25 +1,11 @@
-<?php
+<?php namespace RS;
 
 class Client
 {
-    private string $name;
-    private int $phoneNumber;
-    private string $email;
-    private array $meetings;
-
-    /**
-     * Creates client.
-     *
-     * @param string $name
-     * @param int $phoneNumber
-     * @param string $email
-     */
-    public function __construct(string $name, int $phoneNumber, string $email) {
-        $this->name = $name;
-        $this->phoneNumber = $phoneNumber;
-        $this->email = $email;
-        $this->meetings = [];
-    }
+    public string $name;
+    public int $phoneNumber;
+    public string $email;
+    public array $meetings;
 
     /**
      * Finds client in the database.
