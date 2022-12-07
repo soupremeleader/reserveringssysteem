@@ -9,7 +9,7 @@ if (isset($_POST['clientSbmt'])) {
     $clientEmail = $_POST['clientEmail'];
 
     $existingClient = $connection->prepare("SELECT `clients` WHERE `name` LIKE :clientName");
-    $exist = $existingClient->execute([':clientName' => $clientName])->fetch();
+//    $exist = $existingClient->execute([':clientName' => $clientName])->fetch();
 
     if ($clientName == "") {
         $clientError = "Vul naam van klant in!";
@@ -28,7 +28,6 @@ if (isset($_POST['clientSbmt'])) {
 }
 
 if (isset($_POST['submitMeeting'])) {
-
 }
 
 
@@ -43,9 +42,9 @@ if (isset($_POST['submitMeeting'])) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="includes/stylesheets/index.scss">
+    <script type="text/javascript" src="js/addMeetingVisibility.js" defer></script>
     <script type="text/javascript" src="js/calendar.js" defer></script>
     <script type="text/javascript" src="js/prev-next-btn.js" defer></script>
-    <script type="text/javascript" src="js/addMeetingVisibility.js" defer></script>
     <script type="text/javascript" src="js/addClientVisibility.js" defer></script>
     <script type="text/javascript" src="js/selectWeekNr.js" defer></script>
     <script type="text/javascript" src="js/getClientNamesFromDB.js" defer></script>
@@ -91,6 +90,8 @@ if (isset($_POST['submitMeeting'])) {
         <input list="dataClients" id="meetClient" name="meetClient" placeholder="naam klant"/>
         <datalist id="dataClients"></datalist>
         <input type="button" id="addClientBtn" value="+"/><br/>
+        <label for="meetDate">Datum</label>
+        <input id="meetDate" name="meetDate" type="date"/>
         <label for="beginTimeslot">Van</label>
         <input type="time" name="meetBeginTime" id="beginTimeslot"/>
         <label for="endTimeslot">tot</label>

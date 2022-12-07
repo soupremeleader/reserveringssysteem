@@ -29,20 +29,27 @@ function calendar(offset) {
         td1.appendChild(document.createTextNode(`${days[i]}`));
         let td2 = tr2.insertCell();
         newDate = new Date(date.getFullYear(), date.getMonth(), (date.getDate() - date.getDay() + i + curOffset + 1));
+        td2.dataset.day = String(newDate.getDate()).padStart(2, '0');
+        td2.dataset.month = String(newDate.getMonth() + 1).padStart(2, '0');
+        td2.dataset.year = String(newDate.getFullYear());
         td2.appendChild(document.createTextNode(`${newDate.getDate()}-${newDate.getMonth() + 1}-${newDate.getFullYear()}`));
     }
 
     let tbody = document.getElementById("tbodyCal");
     let tr, td;
-
     for (let i = 0; i < 24; i++) {
+
         tr = tbody.insertRow();
         td = tr.insertCell();
         td.appendChild(document.createTextNode(`${i}`));
         for (let j = 0; j < 7; j++) {
-            tr.insertCell();
+            let newTd = document.createElement('td')
+            newTd.dataset.i = i;
+            newTd.dataset.j = j + 1;
+            tr.appendChild(newTd)
         }
     }
+    tbody.addEventListener('click', addTimeMeeting);
 }
 
 function offsetWeek(offset) {
