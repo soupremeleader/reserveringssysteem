@@ -1,15 +1,38 @@
 <?php
 require_once 'includes/init.php';
+$clientError = "";
+$meetingError = "";
 
 if (isset($_POST['clientSbmt'])) {
     $clientName = $_POST['clientName'];
     $clientPhone = $_POST['clientPhone'];
     $clientEmail = $_POST['clientEmail'];
 
-    $newClient = $connection->prepare("INSERT INTO `clients` (`name`, `phone_number`, `email`) VALUES (:clientName, :clientPhone, :clientEmail)");
-    $newClient->execute([':clientName' => $clientName, ':clientPhone' => $clientPhone, ':clientEmail' => $clientEmail]);
-    print_r($connection->query("SELECT * FROM `clients`")->fetchAll(PDO::FETCH_CLASS, "\\RS\\Client"));
+    $existingClient = $connection->prepare("SELECT `clients` WHERE `name` LIKE :clientName");
+    $exist = $existingClient->execute([':clientName' => $clientName])->fetch();
+
+    if ($clientName == "") {
+        $clientError = "Vul naam van klant in!";
+
+    } else if ($clientPhone == "" || $clientEmail == "") {
+        $clientError = "Geen contact aangeleverd!";
+
+    } else if (count($exist) > 0) {
+        $clientError = "Klant bestaat al!";
+
+    } else {
+        $newClient = $connection->prepare("INSERT INTO `clients` (`name`, `phone_number`, `email`) VALUES (:clientName, :clientPhone, :clientEmail)");
+        $newClient->execute([':clientName' => $clientName, ':clientPhone' => $clientPhone, ':clientEmail' => $clientEmail]);
+//    print_r($connection->query("SELECT * FROM `clients`")->fetchAll(PDO::FETCH_CLASS, "\\RS\\Client"));
+    }
 }
+
+if (isset($_POST['submitMeeting'])) {
+
+}
+
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,6 +43,13 @@ if (isset($_POST['clientSbmt'])) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="includes/stylesheets/index.scss">
+    <script type="text/javascript" src="js/calendar.js" defer></script>
+    <script type="text/javascript" src="js/prev-next-btn.js" defer></script>
+    <script type="text/javascript" src="js/addMeetingVisibility.js" defer></script>
+    <script type="text/javascript" src="js/addClientVisibility.js" defer></script>
+    <script type="text/javascript" src="js/selectWeekNr.js" defer></script>
+    <script type="text/javascript" src="js/getClientNamesFromDB.js" defer></script>
+<!--    <script type="text/javascript" src="js/main.js" defer></script>-->
     <title>Document</title>
 </head>
 <body>
@@ -58,7 +88,8 @@ if (isset($_POST['clientSbmt'])) {
     <button id="exitMeetBtn">X</button>
     <form>
         <label for="meetClient">Klant </label>
-        <input type="text" id="meetClient" name="meetClient" placeholder="naam klant"/>
+        <input list="dataClients" id="meetClient" name="meetClient" placeholder="naam klant"/>
+        <datalist id="dataClients"></datalist>
         <input type="button" id="addClientBtn" value="+"/><br/>
         <label for="beginTimeslot">Van</label>
         <input type="time" name="meetBeginTime" id="beginTimeslot"/>
@@ -75,6 +106,7 @@ if (isset($_POST['clientSbmt'])) {
     <form method="post">
         <label for="clientName">Naam klant:</label>
         <input type="text" id="clientName" name="clientName" placeholder="Naam klant"/><br/>
+        <?= $clientError ?>
         <label for="clientPhone">Telefoonnummer: </label>
         <input type="tel" id="clientPhone" name="clientPhone" pattern="[0-9]{10}"/><br/>
         <label for="clientEmail">E-mail: </label>
@@ -84,153 +116,3 @@ if (isset($_POST['clientSbmt'])) {
 </section>
 </body>
 </html>
-<script>
-    let curOffset = 0;
-
-    function getWeek(date) {
-        let firstDate = new Date(date.getFullYear(), 0, 1)
-        let days = Math.floor((date - firstDate)) / (24 * 60 * 60 * 1000);
-        return Math.ceil(days / 7);
-    }
-
-    function calendar(offset) {
-        curOffset += parseInt(offset);
-
-        let date = new Date();
-        let newDate = new Date(date.getFullYear(), date.getMonth(), (date.getDate() - date.getDay() + curOffset + 1));
-        document.getElementById("weeknr").innerText = `Week ${getWeek(newDate)}`;
-
-        document.getElementById("weeknrInput").setAttribute("value", `${getWeek(newDate)}`);
-        document.getElementById("yearInput").setAttribute("value", `${newDate.getFullYear()}`);
-        document.getElementById("weeknrSubmit").setAttribute("data-weekoffset", `${newDate}`);
-
-        let thead = document.getElementById("theadCal");
-        const days = ["Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"];
-
-        let tr1 = thead.insertRow();
-        tr1.insertCell();
-        let tr2 = thead.insertRow();
-        tr2.insertCell();
-        for (let i = 0; i < 7; i++) {
-            let td1 = tr1.insertCell();
-            td1.appendChild(document.createTextNode(`${days[i]}`));
-            let td2 = tr2.insertCell();
-            newDate = new Date(date.getFullYear(), date.getMonth(), (date.getDate() - date.getDay() + i + curOffset + 1));
-            td2.appendChild(document.createTextNode(`${newDate.getDate()}-${newDate.getMonth() + 1}-${newDate.getFullYear()}`));
-        }
-
-        let tbody = document.getElementById("tbodyCal");
-        let tr, td;
-
-        for (let i = 0; i < 24; i++) {
-            tr = tbody.insertRow();
-            td = tr.insertCell();
-            td.appendChild(document.createTextNode(`${i}`));
-            for (let j = 0; j < 7; j++) {
-                tr.insertCell();
-            }
-        }
-    }
-
-    function offsetWeek(offset) {
-        let tbl = document.getElementById("tableCal");
-        while (tbl.lastChild) {
-            tbl.removeChild(tbl.lastChild);
-        }
-
-        let thead = document.createElement("thead");
-        thead.setAttribute("id", "theadCal");
-        tbl.appendChild(thead);
-
-        let tbody = document.createElement("tbody");
-        tbody.setAttribute("id", "tbodyCal");
-        tbl.appendChild(tbody);
-
-        let tfoot = document.createElement("tfoot");
-        tfoot.setAttribute("id", "tfootCal");
-        tbl.appendChild(tfoot);
-
-        calendar(offset);
-    }
-
-    function selectWeeknr() {
-        document.getElementById("weeknrForm").classList.remove("invisible");
-        document.getElementById("weeknrExit").classList.remove("invisible");
-        document.getElementById("weeknrSelect").classList.add("invisible");
-    }
-
-    function exitWeeknrSelect() {
-        document.getElementById("weeknrForm").classList.add("invisible");
-        document.getElementById("weeknrExit").classList.add("invisible");
-        document.getElementById("weeknrSelect").classList.remove("invisible");
-    }
-
-    function submitWeeknr(e) {
-        e.preventDefault();
-        let weekOffset = (document.getElementById("weeknrInput").value - getWeek(new Date(e.target.dataset.weekoffset))) * 7 + (document.getElementById("yearInput").value - new Date(e.target.dataset.weekoffset).getFullYear()) * 365 ;
-        offsetWeek(weekOffset);
-        exitWeeknrSelect();
-    }
-
-    function submitPrevNext(e) {
-        offsetWeek(e.target.dataset.offset * 7);
-    }
-
-    function resetOffset() {
-        curOffset = 0;
-        offsetWeek(0);
-    }
-
-    function addMeeting() {
-        document.getElementById("addMeetSection").classList.remove("invisible");
-    }
-
-    function exitMeeting() {
-        document.getElementById("addMeetSection").classList.add("invisible");
-    }
-
-    function addClient() {
-        document.getElementById("addClientSection").classList.remove("invisible");
-    }
-
-    function exitClient() {
-        document.getElementById("addClientSection").classList.add("invisible");
-    }
-
-    let prevBtn = document.getElementById("prevBtn");
-    let nextBtn = document.getElementById("nextBtn");
-
-    let weeknrSelect = document.getElementById("weeknrSelect");
-    let weeknrExit = document.getElementById("weeknrExit");
-    let weeknrSubmit = document.getElementById("weeknrSubmit");
-
-    let todayBtn = document.getElementById("todayBtn");
-
-    let addMeetBtn = document.getElementById("addMeetBtn");
-    let exitMeetBtn = document.getElementById("exitMeetBtn");
-    let addClientBtn = document.getElementById("addClientBtn");
-    let exitClientBtn = document.getElementById("exitClientBtn");
-
-    prevBtn.addEventListener('click', submitPrevNext);
-    nextBtn.addEventListener('click', submitPrevNext);
-
-    weeknrSelect.addEventListener('click', selectWeeknr);
-    weeknrExit.addEventListener('click', exitWeeknrSelect);
-    weeknrSubmit.addEventListener('click', submitWeeknr);
-
-    todayBtn.addEventListener('click', resetOffset);
-
-    addMeetBtn.addEventListener('click', addMeeting);
-    exitMeetBtn.addEventListener('click', exitMeeting);
-    addClientBtn.addEventListener('click', addClient);
-    exitClientBtn.addEventListener('click', exitClient);
-
-
-    calendar(0);
-
-    document.getElementById("weeknrExit").classList.add("invisible");
-    document.getElementById("weeknrForm").classList.add("invisible");
-
-    document.getElementById("addMeetSection").classList.add("invisible");
-    document.getElementById("addClientSection").classList.add("invisible");
-</script>

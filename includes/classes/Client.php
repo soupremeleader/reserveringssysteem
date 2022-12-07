@@ -2,10 +2,10 @@
 
 class Client
 {
+
     public string $name;
     public int $phoneNumber;
     public string $email;
-    public array $meetings;
 
     /**
      * Finds client in the database.
