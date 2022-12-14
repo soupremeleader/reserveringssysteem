@@ -2,34 +2,11 @@
 
 class Timeslot
 {
-    private int $day;
-    private int $month;
-    private int $year;
-    private int $hour;
-    private int $minute;
-    private int $beginTime;
-    private int $length;
+    public int $id;
+    public int $beginTime;
+    public int $endTime;
 
-    /**
-     * Creates Timeslot.
-     *
-     * @param int $day
-     * @param int $month
-     * @param int $year
-     * @param int $hour
-     * @param int $minute
-     * @param int $beginTime
-     * @param int $length
-     */
-    public function __construct(int $day, int $month, int $year, int $hour, int $minute, int $beginTime, int $length) {
-        $this->day = $day;
-        $this->month = $month;
-        $this->year = $year;
-        $this->hour = $hour;
-        $this->minute = $minute;
-        $this->beginTime = $beginTime;
-        $this->length = $length;
-    }
+
 
     /**
      * Finds timeslot in database.

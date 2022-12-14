@@ -2,21 +2,10 @@
 
 class Meeting
 {
-    private Client $client;
-    private Timeslot $timeslot;
-    private string $extraNote;
-    /**
-     * Creates new Meeting
-     *
-     * @param Client $client
-     * @param Timeslot $timeslot
-     * @param string $extraNote
-     */
-    public function __construct(Client $client, Timeslot $timeslot, string $extraNote) {
-        $this->client = $client;
-        $this->timeslot = $timeslot;
-        $this->extraNote = $extraNote;
-    }
+    public int $id;
+    public Client $client;
+    public Timeslot $timeslot;
+    public string $extraNote;
 
     /**
      *  Finds meeting in database based on timeslot.
