@@ -1,45 +1,247 @@
+@import './base';
+
 body {
   position: relative;
-  margin: 0;
-  padding: 0;
-}
-main {
-  position: absolute;
-  width: 100vw;
-}
-table, tr, td {
-  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  #logout {
+    width:100%;
+    display:flex;
+    align-self: flex-start;
+    text-align: right;
+    justify-content: flex-end;
+
+    >a {
+      margin-top: 1.5%;
+      margin-right: 2%;
+      color: $buttonGreen;
+      font-family: HackBold;
+      text-decoration-line: underline;
+      font-size: 0.8em;
+      cursor: pointer;
+
+      &:hover {
+        color: $gold;
+      }
+    }
+  }
+
+  main {
+    top: 7.5%;
+    bottom: 2.5%;
+    height: 90%;
+    aspect-ratio: 1722/1326;
+    position: absolute;
+    background-image: url(../stylesheets/img/agenda.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+
+    #book {
+      width: 100%;
+      aspect-ratio: 1722/1192;
+      display: flex;
+
+      #agendaheader {
+        height: 5%;
+        width: 90%;
+
+        div {
+          height: 100%;
+          display:flex;
+        }
+
+        >div >div {
+          flex-direction: column;
+          width: 100%;
+
+          #weeknr {
+            display:flex;
+            align-items: center;
+            margin:0;
+            height: 100%;
+            width: 85%;
+            color: $buttonGreen;
+            font-family: HackBold;
+            cursor:default;
+          }
+        }
+
+        #prevBtn, #nextBtn, #weeknrSelect, #weeknrExit {
+          object-fit: contain;
+          filter: invert(48%) sepia(32%) saturate(272%) hue-rotate(95deg) brightness(99%) contrast(86%);
+          height: 100%;
+          cursor: pointer;
+        }
+
+      }
+
+      table {
+        border-collapse: collapse;
+        table-layout: fixed;
+
+        thead > td{
+          padding: 2px;
+        }
+
+        .evenHours:hover, .oddHours:hover {
+          cursor: pointer;
+          border: 2px solid $darkgreen;
+          box-shadow: 3px 3px 10px 0px rgba(0,0,0,1);
+        }
+
+        .evenHours {
+          background-color: $appointmentGreen;
+        }
+
+        .oddHours {
+          background-color: $appointmentGrey;
+        }
+
+        #weekend td {
+          height: 20%;
+        }
+
+        #tbodyCal-left > td, #tbodyCal-right > td {
+          height: 5%;
+        }
+
+
+
+      }
+
+      #tableCal-sat, #tableCal-sun {
+        height: 50%;
+      }
+
+      #left-agenda, #right-agenda {
+        width: 40%;
+        aspect-ratio: 861/1160;
+      }
+
+      #left-agenda {
+        margin: 5% 2.5% 5% 7.5%;
+
+        #tableCal-left {
+          height: 95%;
+        }
+      }
+
+      #right-agenda {
+        margin: 5% 7.5% 5% 2.5%;
+        display: flex;
+      }
+    }
+
+    nav {
+      width: 100%;
+      aspect-ratio: 1722/135;
+    }
+  }
 }
 
 .invisible {
-  display:none;
+  display: none;
 }
 
-header div {
-  display: flex;
-}
 
-header >div >div {
-  flex-direction: column;
-}
-
-section {
+#overlay{
+  height: 100%;
+  width: 100%;
+  background-color: $overlay;
   position: absolute;
-  height: 50vh;
-  width: 50vw;
-  background-color: white;
-  border: 2px solid red;
-  margin: auto;
+
+  >section {
+    position: relative;
+    height: 50vh;
+    width: 50vw;
+    background-color: $background;
+    border: 2px solid $border;
+    padding: 5%;
+
+    input {
+      border: 0px solid;
+    }
+  }
 }
 
 #addMeetSection {
-  z-index: 1;
+  z-index: 2;
 }
 
 #addClientSection {
-  z-index:2;
+  z-index: 3;
 }
 
 .yellow {
   background-color: yellow;
 }
+
+.dateTxt {
+  margin: 0;
+  display: inline;
+  font-size: 0.8em;
+  cursor: default;
+}
+
+.goldTxt {
+  font-family: HackBold;
+  color: $gold;
+  margin: 5px;
+}
+
+.limeTxt {
+  font-font: HackItalic;
+  color: $limegreen;
+}
+
+.buttonGreenTxt {
+  color: $buttonGreen;
+  font-size: 0.7em;
+  padding: 5px;
+  text-align: left;
+  vertical-align: text-top;
+  cursor:default;
+}
+
+.timeBorder {
+  border-bottom: 1px solid $buttonGreen;
+  width: 50%;
+}
+
+#meetBtnDiv {
+
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  top: 7.5%;
+  bottom: 2.5%;
+  right: 2.5%;
+  height: 90%;
+
+  #addMeetBtn {
+    color: $grey;
+    height: 10%;
+    object-fit: contain;
+    filter: invert(100%) sepia(0%) saturate(3598%) hue-rotate(258deg) brightness(91%) contrast(86%);
+    position: absolute;
+
+    &:hover {
+      cursor: pointer;
+      filter: invert(52%) sepia(0%) saturate(0%) hue-rotate(234deg) brightness(99%) contrast(95%);
+    }
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

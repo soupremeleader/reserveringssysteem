@@ -1,0 +1,67 @@
+@import './base';
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $buttonGreen;
+
+  main {
+    width: 50%;
+    min-width: 370px;
+    max-width: 510px;
+  }
+
+  form {
+    display:flex;
+    color: $border;
+    margin: 2%;
+    label {
+      color: $buttonGreen;
+      font-family: HackBold;
+    }
+
+    div:first-child {
+      width: 60%;
+      min-width: 260px;
+    }
+
+    #loginName {
+      margin-bottom: 7%;
+    }
+
+    div:last-child {
+      display:flex;
+      align-items: flex-end;
+      margin-bottom: 5px;
+    }
+  }
+
+  label {
+    font-size: 2em;
+    width: 70%;
+  }
+
+  input[type=text], input[type=password] {
+    width: 70%;
+    min-width: 260px;
+    font-size: 1em;
+  }
+
+  input[type=submit] {
+    width: fit-content;
+    aspect-ratio: 1/1;
+    background-color: $darkgreen;
+    color: $innerButton;
+    font-family: HackBold;
+    border-radius: 10%;
+    border: none;
+    display: inline-block;
+    font-size: 1em;
+
+    &:hover {
+      cursor:pointer;
+      background-color: $buttonGreen;
+    }
+  }
+}

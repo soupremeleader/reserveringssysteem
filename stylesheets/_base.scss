@@ -1,0 +1,29 @@
+@import './variables';
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: HackRegular;
+  background-color: $background;
+}
+
+.greyInput input:not([type=submit]) {
+  border: none;
+  background-color: $appointmentGrey;
+  color: $border;
+  border-radius: 5px;
+  padding: 2%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  &:focus {
+    outline: 2px solid $overlay;
+  }
+
+  &::placeholder {
+    color: $gold;
+  }
+}

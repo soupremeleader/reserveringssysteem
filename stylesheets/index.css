@@ -1,0 +1,250 @@
+@font-face {
+  font-family: HackRegular;
+  src: url(../stylesheets/fonts/Hack-Regular.ttf);
+}
+@font-face {
+  font-family: HackBold;
+  src: url(../stylesheets/fonts/Hack-Bold.ttf);
+}
+@font-face {
+  font-family: HackItalic;
+  src: url(../stylesheets/fonts/Hack-Italic.ttf);
+}
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: HackRegular;
+  background-color: #FFFFF2;
+}
+
+.greyInput input:not([type=submit]) {
+  border: none;
+  background-color: rgba(217, 217, 217, 0.7);
+  color: #B2726B;
+  border-radius: 5px;
+  padding: 2%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.greyInput input:not([type=submit]):focus {
+  outline: 2px solid rgba(132, 132, 130, 0.7);
+}
+.greyInput input:not([type=submit])::placeholder {
+  color: #B19860;
+}
+
+body {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body #logout {
+  width: 100%;
+  display: flex;
+  align-self: flex-start;
+  text-align: right;
+  justify-content: flex-end;
+}
+body #logout > a {
+  margin-top: 1.5%;
+  margin-right: 2%;
+  color: #889A82;
+  font-family: HackBold;
+  text-decoration-line: underline;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+body #logout > a:hover {
+  color: #B19860;
+}
+body main {
+  top: 7.5%;
+  bottom: 2.5%;
+  height: 90%;
+  aspect-ratio: 1722/1326;
+  position: absolute;
+  background-image: url(../stylesheets/img/agenda.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+}
+body main #book {
+  width: 100%;
+  aspect-ratio: 1722/1192;
+  display: flex;
+}
+body main #book #agendaheader {
+  height: 5%;
+  width: 90%;
+}
+body main #book #agendaheader div {
+  height: 100%;
+  display: flex;
+}
+body main #book #agendaheader > div > div {
+  flex-direction: column;
+  width: 100%;
+}
+body main #book #agendaheader > div > div #weeknr {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  height: 100%;
+  width: 85%;
+  color: #889A82;
+  font-family: HackBold;
+  cursor: default;
+}
+body main #book #agendaheader #prevBtn, body main #book #agendaheader #nextBtn, body main #book #agendaheader #weeknrSelect, body main #book #agendaheader #weeknrExit {
+  object-fit: contain;
+  filter: invert(48%) sepia(32%) saturate(272%) hue-rotate(95deg) brightness(99%) contrast(86%);
+  height: 100%;
+  cursor: pointer;
+}
+body main #book table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+body main #book table thead > td {
+  padding: 2px;
+}
+body main #book table .evenHours:hover, body main #book table .oddHours:hover {
+  cursor: pointer;
+  border: 2px solid #678A77;
+  box-shadow: 3px 3px 10px 0px rgb(0, 0, 0);
+}
+body main #book table .evenHours {
+  background-color: rgba(198, 214, 192, 0.7);
+}
+body main #book table .oddHours {
+  background-color: rgba(217, 217, 217, 0.7);
+}
+body main #book table #weekend td {
+  height: 20%;
+}
+body main #book table #tbodyCal-left > td, body main #book table #tbodyCal-right > td {
+  height: 5%;
+}
+body main #book #tableCal-sat, body main #book #tableCal-sun {
+  height: 50%;
+}
+body main #book #left-agenda, body main #book #right-agenda {
+  width: 40%;
+  aspect-ratio: 861/1160;
+}
+body main #book #left-agenda {
+  margin: 5% 2.5% 5% 7.5%;
+}
+body main #book #left-agenda #tableCal-left {
+  height: 95%;
+}
+body main #book #right-agenda {
+  margin: 5% 7.5% 5% 2.5%;
+  display: flex;
+}
+body main nav {
+  width: 100%;
+  aspect-ratio: 1722/135;
+}
+
+.invisible {
+  display: none;
+}
+
+#overlay {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(132, 132, 130, 0.7);
+  position: absolute;
+}
+#overlay > section {
+  position: relative;
+  height: 50vh;
+  width: 50vw;
+  background-color: #FFFFF2;
+  border: 2px solid #B2726B;
+  padding: 5%;
+}
+#overlay > section input {
+  border: 0px solid;
+}
+
+#addMeetSection {
+  z-index: 2;
+}
+
+#addClientSection {
+  z-index: 3;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.dateTxt {
+  margin: 0;
+  display: inline;
+  font-size: 0.8em;
+  cursor: default;
+}
+
+.goldTxt {
+  font-family: HackBold;
+  color: #B19860;
+  margin: 5px;
+}
+
+.limeTxt {
+  font-font: HackItalic;
+  color: #B2C8AF;
+}
+
+.buttonGreenTxt {
+  color: #889A82;
+  font-size: 0.7em;
+  padding: 5px;
+  text-align: left;
+  vertical-align: text-top;
+  cursor: default;
+}
+
+.timeBorder {
+  border-bottom: 1px solid #889A82;
+  width: 50%;
+}
+
+#meetBtnDiv {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  top: 7.5%;
+  bottom: 2.5%;
+  right: 2.5%;
+  height: 90%;
+}
+#meetBtnDiv #addMeetBtn {
+  color: #D9D9D9;
+  height: 10%;
+  object-fit: contain;
+  filter: invert(100%) sepia(0%) saturate(3598%) hue-rotate(258deg) brightness(91%) contrast(86%);
+  position: absolute;
+}
+#meetBtnDiv #addMeetBtn:hover {
+  cursor: pointer;
+  filter: invert(52%) sepia(0%) saturate(0%) hue-rotate(234deg) brightness(99%) contrast(95%);
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=index.css.map */

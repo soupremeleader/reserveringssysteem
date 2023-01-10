@@ -3,7 +3,7 @@ require_once 'includes/init.php';
 require_once 'includes/addClient.php';
 
 $clients = $connection->query("SELECT * FROM `clients`")->fetchAll(PDO::FETCH_CLASS, "\\RS\\Client");
-//print_r($clients);
+print_r($clients);
 ?>
 <!doctype html>
 <html lang="en">
@@ -38,17 +38,17 @@ $clients = $connection->query("SELECT * FROM `clients`")->fetchAll(PDO::FETCH_CL
                 <td class="is-vcentered"><?= $client->email; ?></td>
                 <td class="is-vcentered"><?= $client->phonenumber; ?></td>
                 <td class="is-vcentered"><a href="details.php?id=<?= $client->client_id; ?>"><img class="icon"
-                                                                                                  src="img/circle-info-solid.svg"/></a>
+                                                                                                  src="stylesheets/img/circle-info-solid.svg"/></a>
                 </td>
                 <td class="is-vcentered" ><img data-edit="<?= $client->client_id; ?>"
                                               data-name="<?= $client->name; ?>"
                                               data-email="<?= $client->email; ?>"
                                               data-phone="<?= $client->phonenumber; ?>"
-                                               class="icon" src="img/pen-to-square-solid.svg"/>
+                                               class="icon" src="stylesheets/img/pen-to-square-solid.svg"/>
                 </td>
                 <td class="is-vcentered"><img  data-remove="<?= $client->client_id; ?>"
                                                data-name="<?= $client->name; ?>"
-                            class="icon" src="img/trash-can-regular.svg" /></td>
+                            class="icon" src="stylesheets/img/trash-can-regular.svg" /></td>
             </tr>
         <?php endforeach; ?>
         </tbody>

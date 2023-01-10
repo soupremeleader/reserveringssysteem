@@ -7,6 +7,7 @@ require_once 'classes/Agenda.php';
 require_once 'classes/Client.php';
 require_once 'classes/Meeting.php';
 require_once 'classes/Timeslot.php';
+require_once 'classes/User.php';
 require_once 'classes/Databases/Database.php';
 
 try {
