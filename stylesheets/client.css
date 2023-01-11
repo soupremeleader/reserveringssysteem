@@ -1,0 +1,38 @@
+img .icon {
+  width: 20px;
+  height: 20px;
+  color: black;
+}
+
+td a {
+  width: 100%;
+  display: block;
+}
+
+td img {
+  cursor: pointer;
+}
+
+main {
+  position: absolute;
+  width: 100vw;
+}
+
+.invisible {
+  display: none;
+}
+
+section {
+  position: absolute;
+  height: 50vh;
+  width: 50vw;
+  background-color: white;
+  border: 2px solid red;
+  margin: auto;
+}
+
+#addClientSection {
+  z-index: 2;
+}
+
+/*# sourceMappingURL=client.css.map */
