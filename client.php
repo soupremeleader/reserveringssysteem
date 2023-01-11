@@ -38,17 +38,17 @@ print_r($clients);
                 <td class="is-vcentered"><?= $client->email; ?></td>
                 <td class="is-vcentered"><?= $client->phonenumber; ?></td>
                 <td class="is-vcentered"><a href="details.php?id=<?= $client->client_id; ?>"><img class="icon"
-                                                                                                  src="stylesheets/img/circle-info-solid.svg"/></a>
+                                                                                                  src="stylesheets/icon/circle-info-solid.svg"/></a>
                 </td>
                 <td class="is-vcentered" ><img data-edit="<?= $client->client_id; ?>"
                                               data-name="<?= $client->name; ?>"
                                               data-email="<?= $client->email; ?>"
                                               data-phone="<?= $client->phonenumber; ?>"
-                                               class="icon" src="stylesheets/img/pen-to-square-solid.svg"/>
+                                               class="icon" src="stylesheets/icon/pen-to-square-solid.svg"/>
                 </td>
                 <td class="is-vcentered"><img  data-remove="<?= $client->client_id; ?>"
                                                data-name="<?= $client->name; ?>"
-                            class="icon" src="stylesheets/img/trash-can-regular.svg" /></td>
+                            class="icon" src="stylesheets/icon/trash-can-regular.svg" /></td>
             </tr>
         <?php endforeach; ?>
         </tbody>

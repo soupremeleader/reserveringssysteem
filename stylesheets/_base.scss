@@ -10,7 +10,7 @@ body {
   background-color: $background;
 }
 
-.greyInput input:not([type=submit]) {
+.greyInput input:not([type=submit]), textarea {
   border: none;
   background-color: $appointmentGrey;
   color: $border;

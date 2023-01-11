@@ -7,13 +7,13 @@ body {
   align-items: center;
 
   #logout {
-    width:100%;
-    display:flex;
+    width: 100%;
+    display: flex;
     align-self: flex-start;
     text-align: right;
     justify-content: flex-end;
 
-    >a {
+    > a {
       margin-top: 1.5%;
       margin-right: 2%;
       color: $buttonGreen;
@@ -34,7 +34,7 @@ body {
     height: 90%;
     aspect-ratio: 1722/1326;
     position: absolute;
-    background-image: url(../stylesheets/img/agenda.png);
+    background-image: url(../stylesheets/img/book.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -52,22 +52,22 @@ body {
 
         div {
           height: 100%;
-          display:flex;
+          display: flex;
         }
 
-        >div >div {
+        > div > div {
           flex-direction: column;
           width: 100%;
 
           #weeknr {
-            display:flex;
+            display: flex;
             align-items: center;
-            margin:0;
+            margin: 0;
             height: 100%;
             width: 85%;
             color: $buttonGreen;
             font-family: HackBold;
-            cursor:default;
+            cursor: default;
           }
         }
 
@@ -84,14 +84,14 @@ body {
         border-collapse: collapse;
         table-layout: fixed;
 
-        thead > td{
+        thead > td {
           padding: 2px;
         }
 
         .evenHours:hover, .oddHours:hover {
           cursor: pointer;
           border: 2px solid $darkgreen;
-          box-shadow: 3px 3px 10px 0px rgba(0,0,0,1);
+          box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 1);
         }
 
         .evenHours {
@@ -109,7 +109,6 @@ body {
         #tbodyCal-left > td, #tbodyCal-right > td {
           height: 5%;
         }
-
 
 
       }
@@ -140,6 +139,38 @@ body {
     nav {
       width: 100%;
       aspect-ratio: 1722/135;
+      display: flex;
+
+      > div {
+        height: 100%;
+      }
+
+      div:nth-child(1) {
+        aspect-ratio: 380/67;
+      }
+
+      div:nth-child(2) {
+        aspect-ratio: 40/67;
+        cursor: pointer;
+      }
+
+      div:nth-child(3) {
+        aspect-ratio: 110/67;
+      }
+
+      div:nth-child(4) {
+        aspect-ratio: 80/67;
+
+        > a {
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      div:nth-child(5) {
+        aspect-ratio: 244/67;
+      }
     }
   }
 }
@@ -149,32 +180,144 @@ body {
 }
 
 
-#overlay{
+#overlay {
   height: 100%;
   width: 100%;
   background-color: $overlay;
   position: absolute;
 
-  >section {
+  > section {
     position: relative;
-    height: 50vh;
-    width: 50vw;
+    height: 47vh;
+    width: 60vw;
     background-color: $background;
-    border: 2px solid $border;
-    padding: 5%;
+    border: 2px solid $gold;
+    border-radius: 4px;
+    padding: 2%;
+
+    > div {
+      height: 7%;
+      width: 7%;
+
+      img {
+        object-fit: contain;
+      }
+    }
+
+    form {
+      height: 100%;
+      padding: 0 5% 0%;
+
+      label {
+        color: $limegreen;
+      }
+    }
+
+    h1 {
+      color: $darkgreen;
+    }
 
     input {
       border: 0px solid;
+    }
+
+    input[type=submit] {
+      background-color: $limegreen;
+      color: $innerButton;
+      border-radius: 10%;
+      padding: 2%;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $softGold;
+      }
     }
   }
 }
 
 #addMeetSection {
   z-index: 2;
+
+  #clientInput {
+    display: flex;
+    align-items: center;
+
+    > * {
+      margin-right: 2%;
+      margin-left: 2%;
+    }
+
+    :first-child {
+      margin-left: 0;
+    }
+
+    :last-child {
+      margin-right: 0;
+    }
+
+    #addClientBtn {
+      height: 5%;
+      width: 5%;
+
+      img {
+        object-fit: contain;
+        filter: invert(84%) sepia(17%) saturate(422%) hue-rotate(358deg) brightness(88%) contrast(90%);
+        cursor: pointer;
+
+        &:hover {
+          filter: invert(65%) sepia(44%) saturate(368%) hue-rotate(4deg) brightness(87%) contrast(87%);
+        }
+      }
+    }
+  }
+
+  #datumInput {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    input :not([type=submit]), [type=date] {
+      color: $gold;
+    }
+  }
+
+  h2 {
+    color: $buttonGreen;
+    padding: 0;
+    margin-bottom: 0;
+    font-size: 1em;
+  }
 }
 
 #addClientSection {
   z-index: 3;
+
+  > form {
+    margin-top: 5%;
+    label {
+      display: inline-block;
+      width: 30%;
+      text-align: right;
+    }
+
+    input:not([type=submit]) {
+      width: 64%;
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: flex-end;
+
+      input[type=submit] {
+        width: fit-content;
+        margin: 1%;
+      }
+    }
+  }
 }
 
 .yellow {
@@ -205,7 +348,7 @@ body {
   padding: 5px;
   text-align: left;
   vertical-align: text-top;
-  cursor:default;
+  cursor: default;
 }
 
 .timeBorder {
@@ -243,5 +386,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.closeBtn {
+  object-fit: contain;
+  filter: invert(100%) sepia(0%) saturate(3598%) hue-rotate(258deg) brightness(91%) contrast(86%);
+  height: 100%;
+  cursor: pointer;
+
+  &:hover {
+    filter: invert(52%) sepia(0%) saturate(0%) hue-rotate(234deg) brightness(99%) contrast(95%);
+  }
+
 }
 

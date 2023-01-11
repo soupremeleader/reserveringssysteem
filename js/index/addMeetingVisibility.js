@@ -1,6 +1,6 @@
 let addMeetBtn = document.getElementById("addMeetBtn");
 let exitMeetBtn = document.getElementById("exitMeetBtn");
-let addMeetSection = document.getElementById("overlay");
+let overlay = document.getElementById("overlay");
 
 let meetClient = document.getElementById("meetClient");
 
@@ -13,15 +13,15 @@ let beginTimeInput = document.getElementById("beginTimeslot");
 let endTimeInput = document.getElementById("endTimeslot");
 
 function addMeeting() {
-    addMeetSection.classList.remove("invisible");
-    addMeetSection.classList.add("flex");
+    overlay.classList.remove("invisible");
+    overlay.classList.add("flex");
 }
 
 function exitMeeting() {
     console.log("hello");
     meetClient.value = "";
-    addMeetSection.classList.add("invisible");
-    addMeetSection.classList.remove("flex");
+    overlay.classList.add("invisible");
+    overlay.classList.remove("flex");
 }
 
 function addTimeMeeting(e) {
@@ -62,7 +62,7 @@ function addTimeMeeting(e) {
 addMeetBtn.addEventListener('click', addMeeting);
 exitMeetBtn.addEventListener('click', exitMeeting);
 
-addMeetSection.classList.add("invisible");
+overlay.classList.add("invisible");
 
 
 tbodyL.addEventListener('click', addTimeMeeting);

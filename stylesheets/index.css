@@ -20,7 +20,7 @@ body {
   background-color: #FFFFF2;
 }
 
-.greyInput input:not([type=submit]) {
+.greyInput input:not([type=submit]), textarea {
   border: none;
   background-color: rgba(217, 217, 217, 0.7);
   color: #B2726B;
@@ -29,10 +29,10 @@ body {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.greyInput input:not([type=submit]):focus {
+.greyInput input:not([type=submit]):focus, textarea:focus {
   outline: 2px solid rgba(132, 132, 130, 0.7);
 }
-.greyInput input:not([type=submit])::placeholder {
+.greyInput input:not([type=submit])::placeholder, textarea::placeholder {
   color: #B19860;
 }
 
@@ -67,7 +67,7 @@ body main {
   height: 90%;
   aspect-ratio: 1722/1326;
   position: absolute;
-  background-image: url(../stylesheets/img/agenda.png);
+  background-image: url(../stylesheets/img/book.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -151,6 +151,31 @@ body main #book #right-agenda {
 body main nav {
   width: 100%;
   aspect-ratio: 1722/135;
+  display: flex;
+}
+body main nav > div {
+  height: 100%;
+}
+body main nav div:nth-child(1) {
+  aspect-ratio: 380/67;
+}
+body main nav div:nth-child(2) {
+  aspect-ratio: 40/67;
+  cursor: pointer;
+}
+body main nav div:nth-child(3) {
+  aspect-ratio: 110/67;
+}
+body main nav div:nth-child(4) {
+  aspect-ratio: 80/67;
+}
+body main nav div:nth-child(4) > a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+body main nav div:nth-child(5) {
+  aspect-ratio: 244/67;
 }
 
 .invisible {
@@ -165,22 +190,113 @@ body main nav {
 }
 #overlay > section {
   position: relative;
-  height: 50vh;
-  width: 50vw;
+  height: 47vh;
+  width: 60vw;
   background-color: #FFFFF2;
-  border: 2px solid #B2726B;
-  padding: 5%;
+  border: 2px solid #B19860;
+  border-radius: 4px;
+  padding: 2%;
+}
+#overlay > section > div {
+  height: 7%;
+  width: 7%;
+}
+#overlay > section > div img {
+  object-fit: contain;
+}
+#overlay > section form {
+  height: 100%;
+  padding: 0 5% 0%;
+}
+#overlay > section form label {
+  color: #B2C8AF;
+}
+#overlay > section h1 {
+  color: #678A77;
 }
 #overlay > section input {
   border: 0px solid;
+}
+#overlay > section input[type=submit] {
+  background-color: #B2C8AF;
+  color: #E6F4F4;
+  border-radius: 10%;
+  padding: 2%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+#overlay > section input[type=submit]:hover {
+  background-color: #cfbb9b;
 }
 
 #addMeetSection {
   z-index: 2;
 }
+#addMeetSection #clientInput {
+  display: flex;
+  align-items: center;
+}
+#addMeetSection #clientInput > * {
+  margin-right: 2%;
+  margin-left: 2%;
+}
+#addMeetSection #clientInput :first-child {
+  margin-left: 0;
+}
+#addMeetSection #clientInput :last-child {
+  margin-right: 0;
+}
+#addMeetSection #clientInput #addClientBtn {
+  height: 5%;
+  width: 5%;
+}
+#addMeetSection #clientInput #addClientBtn img {
+  object-fit: contain;
+  filter: invert(84%) sepia(17%) saturate(422%) hue-rotate(358deg) brightness(88%) contrast(90%);
+  cursor: pointer;
+}
+#addMeetSection #clientInput #addClientBtn img:hover {
+  filter: invert(65%) sepia(44%) saturate(368%) hue-rotate(4deg) brightness(87%) contrast(87%);
+}
+#addMeetSection #datumInput {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#addMeetSection #datumInput input :not([type=submit]), #addMeetSection #datumInput [type=date] {
+  color: #B19860;
+}
+#addMeetSection h2 {
+  color: #889A82;
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 1em;
+}
 
 #addClientSection {
   z-index: 3;
+}
+#addClientSection > form {
+  margin-top: 5%;
+}
+#addClientSection > form label {
+  display: inline-block;
+  width: 30%;
+  text-align: right;
+}
+#addClientSection > form input:not([type=submit]) {
+  width: 64%;
+}
+#addClientSection > form > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-end;
+}
+#addClientSection > form > div input[type=submit] {
+  width: fit-content;
+  margin: 1%;
 }
 
 .yellow {
@@ -245,6 +361,16 @@ body main nav {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.closeBtn {
+  object-fit: contain;
+  filter: invert(100%) sepia(0%) saturate(3598%) hue-rotate(258deg) brightness(91%) contrast(86%);
+  height: 100%;
+  cursor: pointer;
+}
+.closeBtn:hover {
+  filter: invert(52%) sepia(0%) saturate(0%) hue-rotate(234deg) brightness(99%) contrast(95%);
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -9,7 +9,6 @@ if (!isset($_SESSION['loggedInUser'])) {
     header("Location: login.php");
     exit;
 }
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -40,12 +39,12 @@ if (!isset($_SESSION['loggedInUser'])) {
                 <header id="agendaheader">
                     <!--                <button id="todayBtn">Vandaag</button>-->
                     <div>
-                        <img src="stylesheets/img/arrow-left-solid.svg" id="prevBtn" data-offset="-1"/>
+                        <img src="stylesheets/icon/arrow-left-solid.svg" id="prevBtn" data-offset="-1"/>
                         <div>
                             <div>
                                 <p id="weeknr"></p>
-                                <img src="stylesheets/img/square-caret-down-solid.svg" id="weeknrSelect"/>
-                                <img src="stylesheets/img/xmark-solid.svg" id="weeknrExit"/>
+                                <img src="stylesheets/icon/square-caret-down-solid.svg" id="weeknrSelect"/>
+                                <img src="stylesheets/icon/xmark-solid.svg" id="weeknrExit"/>
                             </div>
                             <form id="weeknrForm">
                                 <label for="weeknrInput">Week</label>
@@ -55,7 +54,7 @@ if (!isset($_SESSION['loggedInUser'])) {
                                 <button id="weeknrSubmit">OK</button>
                             </form>
                         </div>
-                        <img src="stylesheets/img/arrow-right-solid.svg" id="nextBtn" data-offset="1"/>
+                        <img src="stylesheets/icon/arrow-right-solid.svg" id="nextBtn" data-offset="1"/>
                     </div>
                 </header>
 
@@ -87,11 +86,15 @@ if (!isset($_SESSION['loggedInUser'])) {
             </section>
         </div>
         <nav>
-
+            <div></div>
+            <div id="todayBtn"></div>
+            <div></div>
+            <div><a href="client.php"></a></div>
+            <div></div>
         </nav>
     </div>
     <div id="meetBtnDiv">
-        <img src="stylesheets/img/circle-plus-solid.svg" id="addMeetBtn"/>
+        <img src="stylesheets/icon/circle-plus-solid.svg" id="addMeetBtn"/>
     </div>
 </main>
 
@@ -100,39 +103,59 @@ if (!isset($_SESSION['loggedInUser'])) {
 
 <div id="overlay">
     <section id="addMeetSection">
-        <h1>Nieuwe afspraak toevoegen</h1>
-        <button id="exitMeetBtn">X</button>
+        <div>
+            <img src="stylesheets/icon/circle-xmark-solid.svg" id="exitMeetBtn" class="closeBtn"/>
+        </div>
         <form method="post" class="greyInput">
-            <?= $meetNameError ?><br/>
-            <label for="meetClient">Klant </label>
-            <input list="dataClients" id="meetClient" name="meetClient" placeholder="naam klant" required/>
-            <datalist id="dataClients"></datalist>
-            <input type="button" id="addClientBtn" value="+"/><br/>
-            <?= $meetDateError ?><br/>
-            <label for="meetDate">Datum</label>
-            <input id="meetDate" name="meetDate" type="date" required/>
-            <label for="beginTimeslot">Van</label>
-            <input type="time" name="beginTimeslot" id="beginTimeslot" required/>
-            <label for="endTimeslot">tot</label>
-            <input type="time" name="endTimeslot" id="endTimeslot" required/>
-            <input type="submit" value="OK" name="submitMeeting"/><br/>
-            <label for="notes">Extra notities</label><br/>
+            <h1>Nieuwe afspraak toevoegen</h1>
+            <?php if ($meetNameError != "") {
+                echo $meetNameError . "<br>";
+            }
+            ?>
+            <div id="clientInput">
+                <label for="meetClient">Klant </label>
+                <input list="dataClients" id="meetClient" name="meetClient" placeholder="naam klant" required/>
+                <datalist id="dataClients"></datalist>
+                <div id="addClientBtn">
+                    <img src="stylesheets/icon/circle-plus-solid.svg">
+                </div>
+                <!--                <input type="button" id="addClientBtn" value="+"/><br/>-->
+            </div>
+            <?php if ($meetDateError != "") {
+                echo $meetDateError . "<br>";
+            }
+            ?>
+            <div id="datumInput">
+                <label for="meetDate">Datum</label>
+                <input id="meetDate" name="meetDate" type="date" required/>
+                <label for="beginTimeslot">Van</label>
+                <input type="time" name="beginTimeslot" id="beginTimeslot" required/>
+                <label for="endTimeslot">tot</label>
+                <input type="time" name="endTimeslot" id="endTimeslot" required/>
+                <input type="submit" value="OK" name="submitMeeting"/><br/>
+            </div>
+            <label for="notes"><h2>Extra notities</h2></label>
             <textarea name="notes" rows="4" cols="50" placeholder="Type notities hier..." id="notes"></textarea><br/>
         </form>
     </section>
 
     <section id="addClientSection">
-        <h1>Nieuwe klant toevoegen</h1>
-        <button id="exitClientBtn">X</button>
+        <div>
+            <img src="stylesheets/icon/circle-xmark-solid.svg" id="exitClientBtn" class="closeBtn"/>
+        </div>
         <form method="post" class="greyInput">
-            <label for="clientName">Naam klant:</label>
+            <h1>Nieuwe klant toevoegen</h1>
+            <label for="clientName">Naam klant</label>
             <input type="text" id="clientName" name="clientName" placeholder="Naam klant"/>
             <?= $clientError ?><br/>
-            <label for="clientPhone">Telefoonnummer: </label>
-            <input type="tel" id="clientPhone" name="clientPhone" pattern="[0-9]{10}"/><br/>
-            <label for="clientEmail">E-mail: </label>
-            <input type="email" id="clientEmail" name="clientEmail"/><br/>
-            <input type="submit" name="clientSbmt" value="Voeg toe"/>
+            <label for="clientPhone">Telefoonnummer</label>
+            <input type="tel" id="clientPhone" name="clientPhone" placeholder="06 12 34 56 78"><br/>
+            <label for="clientEmail">E-mail</label>
+            <input type="email" id="clientEmail" name="clientEmail" placeholder="voorbeeld@email.com"
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/><br/>
+            <div>
+                <input type="submit" name="clientSbmt" value="Voeg toe"/>
+            </div>
         </form>
     </section>
 </div>

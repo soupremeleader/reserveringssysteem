@@ -3,7 +3,7 @@ $meetNameError = "";
 $meetDateError = "";
 
 if (isset($_POST['submitMeeting'])) {
-    /** @var mysqli $connection
+    /** @var /PDO $connection
      */
     $meetClient = $_POST['meetClient'];
     $meetDate = $_POST['meetDate'];
@@ -58,7 +58,7 @@ if (!$error) {
     $newMeetingQuery->execute([':clientId' => $countClient['client_id'], ':timeslotId' => $newTimeslot['LAST_INSERT_ID()'], ':extraNote' => $notes]);
 }
 
-print_r($connection->query("SELECT * FROM `meetings`")->fetchAll(PDO::FETCH_CLASS, "\\RS\\Mee ting"));
+print_r($connection->query("SELECT * FROM `meetings`")->fetchAll(PDO::FETCH_CLASS, "\\RS\\Meeting"));
 
 
 }

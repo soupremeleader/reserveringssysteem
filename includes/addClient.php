@@ -1,5 +1,6 @@
 <?php
 $clientError = "";
+$phoneRegex = "/^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$/";
 
 if (isset($_POST['clientSbmt'])) {
     $clientName = $_POST['clientName'];
@@ -16,6 +17,9 @@ if (isset($_POST['clientSbmt'])) {
 
     } else if ($clientPhone == "" || $clientEmail == "") {
         $clientError = "Geen contact aangeleverd!";
+
+    } else if (!preg_match($phoneRegex, $clientPhone)) {
+        $clientError = "Incorrect telefoonnummer!";
 
     } else if (is_array($countClient)) {
         $clientError = "Klant bestaat al!";
