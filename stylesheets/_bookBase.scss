@@ -1,0 +1,226 @@
+@import './base';
+
+body {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .logout {
+    width: 100%;
+    display: flex;
+    align-self: flex-start;
+    text-align: right;
+    justify-content: flex-end;
+
+    > a {
+      margin-top: 1.5%;
+      margin-right: 2%;
+      color: $buttonGreen;
+      font-family: HackBold;
+      text-decoration-line: underline;
+      font-size: 0.8em;
+      cursor: pointer;
+
+      &:hover {
+        color: $gold;
+      }
+    }
+  }
+
+  main {
+    top: 7.5%;
+    bottom: 2.5%;
+    height: 90%;
+    aspect-ratio: 1722/1326;
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+
+    .book {
+      width: 100%;
+      aspect-ratio: 1722/1192;
+      display: flex;
+
+      .bookHeader {
+        height: 5%;
+        width: 90%;
+
+        div {
+          height: 100%;
+          display: flex;
+        }
+
+        > div > div {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .bookHeaderTitle {
+          align-items: center;
+          margin-right: 0;
+          margin-top: 0;
+          margin-bottom: 0;
+          height: 100%;
+          width: 85%;
+          color: $buttonGreen;
+          font-family: HackBold;
+          cursor: default;
+        }
+
+        .headerBtn {
+          object-fit: contain;
+          filter: $darkGreenFilter;
+          height: 100%;
+          cursor: pointer;
+
+          &:hover {
+            filter: $goldFilter;
+          }
+        }
+      }
+
+      .left-book, .right-book {
+        width: 40%;
+        aspect-ratio: 861/1160;
+      }
+
+      .left-book {
+        margin: 5% 2.5% 5% 7.5%;
+      }
+
+      .right-book {
+        margin: 5% 7.5% 5% 2.5%;
+        display: flex;
+      }
+    }
+  }
+
+  #overlay {
+    height: 100%;
+    width: 100%;
+    background-color: $overlay;
+    position: absolute;
+
+    > section {
+      position: relative;
+      height: 47vh;
+      width: 60vw;
+      background-color: $background;
+      border: 2px solid $gold;
+      border-radius: 4px;
+      padding: 2%;
+
+      > div {
+        height: 7%;
+        width: 7%;
+
+        img {
+          object-fit: contain;
+        }
+      }
+
+      form {
+        height: 100%;
+        padding: 0 5% 0%;
+
+        label {
+          color: $limegreen;
+        }
+      }
+
+      h1 {
+        color: $darkGreen;
+      }
+
+      input {
+        border: 0px solid;
+      }
+
+      input[type=submit] {
+        background-color: $limegreen;
+        color: $innerButton;
+        border-radius: 10%;
+        padding: 2%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $softGold;
+        }
+      }
+    }
+  }
+
+  #addClientSection {
+    z-index: 3;
+
+    > form {
+      margin-top: 5%;
+
+      label {
+        display: inline-block;
+        width: 30%;
+        text-align: right;
+      }
+
+      input:not([type=submit]) {
+        width: 64%;
+      }
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-end;
+
+        input[type=submit] {
+          width: fit-content;
+          margin: 1%;
+        }
+      }
+    }
+  }
+
+
+  .closeBtn {
+    object-fit: contain;
+    filter: invert(100%) sepia(0%) saturate(3598%) hue-rotate(258deg) brightness(91%) contrast(86%);
+    height: 100%;
+    cursor: pointer;
+
+    &:hover {
+      filter: invert(52%) sepia(0%) saturate(0%) hue-rotate(234deg) brightness(99%) contrast(95%);
+    }
+  }
+
+  .addBtnDiv {
+
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    top: 7.5%;
+    bottom: 2.5%;
+    right: 2.5%;
+    height: 90%;
+
+    .addBtn {
+      color: $grey;
+      height: 10%;
+      object-fit: contain;
+      filter: invert(100%) sepia(0%) saturate(3598%) hue-rotate(258deg) brightness(91%) contrast(86%);
+      position: absolute;
+
+      &:hover {
+        cursor: pointer;
+        filter: invert(52%) sepia(0%) saturate(0%) hue-rotate(234deg) brightness(99%) contrast(95%);
+      }
+    }
+  }
+}

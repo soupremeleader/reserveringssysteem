@@ -1,38 +1,408 @@
-img .icon {
-  width: 20px;
-  height: 20px;
-  color: black;
+@font-face {
+  font-family: HackRegular;
+  src: url(../stylesheets/fonts/Hack-Regular.ttf);
 }
-
-td a {
-  width: 100%;
-  display: block;
+@font-face {
+  font-family: HackBold;
+  src: url(../stylesheets/fonts/Hack-Bold.ttf);
 }
-
-td img {
-  cursor: pointer;
+@font-face {
+  font-family: HackItalic;
+  src: url(../stylesheets/fonts/Hack-Italic.ttf);
 }
-
-main {
-  position: absolute;
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
   width: 100vw;
+  font-family: HackRegular;
+  background-color: #FFFFF2;
+}
+
+.greyInput input:not([type=submit]), textarea {
+  border: none;
+  background-color: rgba(217, 217, 217, 0.7);
+  color: #B2726B;
+  border-radius: 5px;
+  padding: 2%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.greyInput input:not([type=submit]):focus, textarea:focus {
+  outline: 2px solid rgba(132, 132, 130, 0.7);
+}
+.greyInput input:not([type=submit])::placeholder, textarea::placeholder {
+  color: #B19860;
 }
 
 .invisible {
   display: none;
 }
 
-section {
-  position: absolute;
-  height: 50vh;
-  width: 50vw;
-  background-color: white;
-  border: 2px solid red;
-  margin: auto;
+.flex {
+  display: flex;
 }
 
-#addClientSection {
-  z-index: 2;
+.goldText {
+  color: #B19860;
+}
+
+.limeGreenText {
+  color: #B2C8AF;
+}
+
+@font-face {
+  font-family: HackRegular;
+  src: url(../stylesheets/fonts/Hack-Regular.ttf);
+}
+@font-face {
+  font-family: HackBold;
+  src: url(../stylesheets/fonts/Hack-Bold.ttf);
+}
+@font-face {
+  font-family: HackItalic;
+  src: url(../stylesheets/fonts/Hack-Italic.ttf);
+}
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: HackRegular;
+  background-color: #FFFFF2;
+}
+
+.greyInput input:not([type=submit]), textarea {
+  border: none;
+  background-color: rgba(217, 217, 217, 0.7);
+  color: #B2726B;
+  border-radius: 5px;
+  padding: 2%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.greyInput input:not([type=submit]):focus, textarea:focus {
+  outline: 2px solid rgba(132, 132, 130, 0.7);
+}
+.greyInput input:not([type=submit])::placeholder, textarea::placeholder {
+  color: #B19860;
+}
+
+.invisible {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.goldText {
+  color: #B19860;
+}
+
+.limeGreenText {
+  color: #B2C8AF;
+}
+
+body {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .logout {
+  width: 100%;
+  display: flex;
+  align-self: flex-start;
+  text-align: right;
+  justify-content: flex-end;
+}
+body .logout > a {
+  margin-top: 1.5%;
+  margin-right: 2%;
+  color: #889A82;
+  font-family: HackBold;
+  text-decoration-line: underline;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+body .logout > a:hover {
+  color: #B19860;
+}
+body main {
+  top: 7.5%;
+  bottom: 2.5%;
+  height: 90%;
+  aspect-ratio: 1722/1326;
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+}
+body main .book {
+  width: 100%;
+  aspect-ratio: 1722/1192;
+  display: flex;
+}
+body main .book .bookHeader {
+  height: 5%;
+  width: 90%;
+}
+body main .book .bookHeader div {
+  height: 100%;
+  display: flex;
+}
+body main .book .bookHeader > div > div {
+  flex-direction: column;
+  width: 100%;
+}
+body main .book .bookHeader .bookHeaderTitle {
+  align-items: center;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 100%;
+  width: 85%;
+  color: #889A82;
+  font-family: HackBold;
+  cursor: default;
+}
+body main .book .bookHeader .headerBtn {
+  object-fit: contain;
+  filter: invert(48%) sepia(32%) saturate(272%) hue-rotate(95deg) brightness(99%) contrast(86%);
+  height: 100%;
+  cursor: pointer;
+}
+body main .book .bookHeader .headerBtn:hover {
+  filter: invert(67%) sepia(9%) saturate(1663%) hue-rotate(4deg) brightness(90%) contrast(83%);
+}
+body main .book .left-book, body main .book .right-book {
+  width: 40%;
+  aspect-ratio: 861/1160;
+}
+body main .book .left-book {
+  margin: 5% 2.5% 5% 7.5%;
+}
+body main .book .right-book {
+  margin: 5% 7.5% 5% 2.5%;
+  display: flex;
+}
+body #overlay {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(132, 132, 130, 0.7);
+  position: absolute;
+}
+body #overlay > section {
+  position: relative;
+  height: 47vh;
+  width: 60vw;
+  background-color: #FFFFF2;
+  border: 2px solid #B19860;
+  border-radius: 4px;
+  padding: 2%;
+}
+body #overlay > section > div {
+  height: 7%;
+  width: 7%;
+}
+body #overlay > section > div img {
+  object-fit: contain;
+}
+body #overlay > section form {
+  height: 100%;
+  padding: 0 5% 0%;
+}
+body #overlay > section form label {
+  color: #B2C8AF;
+}
+body #overlay > section h1 {
+  color: #678A77;
+}
+body #overlay > section input {
+  border: 0px solid;
+}
+body #overlay > section input[type=submit] {
+  background-color: #B2C8AF;
+  color: #E6F4F4;
+  border-radius: 10%;
+  padding: 2%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+body #overlay > section input[type=submit]:hover {
+  background-color: #cfbb9b;
+}
+body #addClientSection {
+  z-index: 3;
+}
+body #addClientSection > form {
+  margin-top: 5%;
+}
+body #addClientSection > form label {
+  display: inline-block;
+  width: 30%;
+  text-align: right;
+}
+body #addClientSection > form input:not([type=submit]) {
+  width: 64%;
+}
+body #addClientSection > form > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-end;
+}
+body #addClientSection > form > div input[type=submit] {
+  width: fit-content;
+  margin: 1%;
+}
+body .closeBtn {
+  object-fit: contain;
+  filter: invert(100%) sepia(0%) saturate(3598%) hue-rotate(258deg) brightness(91%) contrast(86%);
+  height: 100%;
+  cursor: pointer;
+}
+body .closeBtn:hover {
+  filter: invert(52%) sepia(0%) saturate(0%) hue-rotate(234deg) brightness(99%) contrast(95%);
+}
+body .addBtnDiv {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  top: 7.5%;
+  bottom: 2.5%;
+  right: 2.5%;
+  height: 90%;
+}
+body .addBtnDiv .addBtn {
+  color: #D9D9D9;
+  height: 10%;
+  object-fit: contain;
+  filter: invert(100%) sepia(0%) saturate(3598%) hue-rotate(258deg) brightness(91%) contrast(86%);
+  position: absolute;
+}
+body .addBtnDiv .addBtn:hover {
+  cursor: pointer;
+  filter: invert(52%) sepia(0%) saturate(0%) hue-rotate(234deg) brightness(99%) contrast(95%);
+}
+
+main {
+  background-image: url(../stylesheets/img/contacts.png);
+}
+main .bookHeader {
+  height: 10%;
+}
+main .bookHeaderTitle {
+  margin-left: 2%;
+}
+main form {
+  display: flex;
+  width: 100%;
+  height: 120%;
+}
+main form label {
+  display: inline-block;
+  height: 100%;
+  aspect-ratio: 1/1;
+  padding: 5px;
+}
+main form label div {
+  aspect-ratio: 1/1;
+  height: 100%;
+}
+main form label div img {
+  object-fit: contain;
+}
+main form input {
+  display: inline-block;
+  width: 70%;
+  margin-left: 5%;
+}
+
+#left-content {
+  margin-top: 8%;
+  height: 85%;
+}
+
+#right-content {
+  height: 100%;
+  width: 100%;
+}
+
+.oddContact {
+  background-color: rgba(217, 217, 217, 0.7);
+}
+
+.contactDivLeft {
+  height: 25%;
+}
+
+.contactDivRight {
+  height: 20%;
+}
+
+.infoDiv {
+  height: 33%;
+  display: flex;
+  font-family: HackBold;
+  align-items: center;
+}
+.infoDiv .iconsDiv {
+  width: 30%;
+  display: flex;
+}
+.infoDiv .iconsDiv .iconDiv {
+  aspect-ratio: 1/1;
+  width: 22%;
+}
+.infoDiv .iconsDiv .iconDiv .crudIcons {
+  object-fit: contain;
+  filter: invert(67%) sepia(9%) saturate(1663%) hue-rotate(4deg) brightness(90%) contrast(83%);
+  height: 80%;
+  width: 80%;
+  cursor: pointer;
+  margin: 10%;
+}
+.infoDiv .iconsDiv .iconDiv .crudIcons:hover {
+  filter: invert(47%) sepia(4%) saturate(16%) hue-rotate(359deg) brightness(98%) contrast(89%);
+}
+
+.odd {
+  margin-left: auto;
+}
+
+.even {
+  margin-left: auto;
+}
+
+.contactInfo {
+  display: flex;
+  height: 33%;
+  align-items: center;
+}
+.contactInfo .contactIconDiv {
+  width: 8%;
+  margin: auto 0 auto;
+}
+.contactInfo .contactIconDiv .contactIcons {
+  object-fit: contain;
+  filter: invert(61%) sepia(22%) saturate(253%) hue-rotate(60deg) brightness(93%) contrast(91%);
+  height: 80%;
+  width: 80%;
+  margin: 10%;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=client.css.map */

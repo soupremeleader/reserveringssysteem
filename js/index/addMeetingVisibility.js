@@ -1,6 +1,5 @@
 let addMeetBtn = document.getElementById("addMeetBtn");
 let exitMeetBtn = document.getElementById("exitMeetBtn");
-let overlay = document.getElementById("overlay");
 
 let meetClient = document.getElementById("meetClient");
 
@@ -61,8 +60,6 @@ function addTimeMeeting(e) {
 
 addMeetBtn.addEventListener('click', addMeeting);
 exitMeetBtn.addEventListener('click', exitMeeting);
-
-overlay.classList.add("invisible");
 
 
 tbodyL.addEventListener('click', addTimeMeeting);

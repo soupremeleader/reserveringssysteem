@@ -1,6 +1,7 @@
 let clientNameInput = document.getElementById("meetClient");
 let datalist = document.getElementById("dataClients");
 
+
 clientNameInput.addEventListener('keyup', function () {
     while (datalist.lastChild) {
         datalist.removeChild(datalist.lastChild);

@@ -36,20 +36,90 @@ body {
   color: #B19860;
 }
 
+.invisible {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.goldText {
+  color: #B19860;
+}
+
+.limeGreenText {
+  color: #B2C8AF;
+}
+
+@font-face {
+  font-family: HackRegular;
+  src: url(../stylesheets/fonts/Hack-Regular.ttf);
+}
+@font-face {
+  font-family: HackBold;
+  src: url(../stylesheets/fonts/Hack-Bold.ttf);
+}
+@font-face {
+  font-family: HackItalic;
+  src: url(../stylesheets/fonts/Hack-Italic.ttf);
+}
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: HackRegular;
+  background-color: #FFFFF2;
+}
+
+.greyInput input:not([type=submit]), textarea {
+  border: none;
+  background-color: rgba(217, 217, 217, 0.7);
+  color: #B2726B;
+  border-radius: 5px;
+  padding: 2%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.greyInput input:not([type=submit]):focus, textarea:focus {
+  outline: 2px solid rgba(132, 132, 130, 0.7);
+}
+.greyInput input:not([type=submit])::placeholder, textarea::placeholder {
+  color: #B19860;
+}
+
+.invisible {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.goldText {
+  color: #B19860;
+}
+
+.limeGreenText {
+  color: #B2C8AF;
+}
+
 body {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-body #logout {
+body .logout {
   width: 100%;
   display: flex;
   align-self: flex-start;
   text-align: right;
   justify-content: flex-end;
 }
-body #logout > a {
+body .logout > a {
   margin-top: 1.5%;
   margin-right: 2%;
   color: #889A82;
@@ -58,7 +128,7 @@ body #logout > a {
   font-size: 0.8em;
   cursor: pointer;
 }
-body #logout > a:hover {
+body .logout > a:hover {
   color: #B19860;
 }
 body main {
@@ -67,128 +137,67 @@ body main {
   height: 90%;
   aspect-ratio: 1722/1326;
   position: absolute;
-  background-image: url(../stylesheets/img/book.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
   display: flex;
   flex-direction: column;
 }
-body main #book {
+body main .book {
   width: 100%;
   aspect-ratio: 1722/1192;
   display: flex;
 }
-body main #book #agendaheader {
+body main .book .bookHeader {
   height: 5%;
   width: 90%;
 }
-body main #book #agendaheader div {
+body main .book .bookHeader div {
   height: 100%;
   display: flex;
 }
-body main #book #agendaheader > div > div {
+body main .book .bookHeader > div > div {
   flex-direction: column;
   width: 100%;
 }
-body main #book #agendaheader > div > div #weeknr {
-  display: flex;
+body main .book .bookHeader .bookHeaderTitle {
   align-items: center;
-  margin: 0;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
   height: 100%;
   width: 85%;
   color: #889A82;
   font-family: HackBold;
   cursor: default;
 }
-body main #book #agendaheader #prevBtn, body main #book #agendaheader #nextBtn, body main #book #agendaheader #weeknrSelect, body main #book #agendaheader #weeknrExit {
+body main .book .bookHeader .headerBtn {
   object-fit: contain;
   filter: invert(48%) sepia(32%) saturate(272%) hue-rotate(95deg) brightness(99%) contrast(86%);
   height: 100%;
   cursor: pointer;
 }
-body main #book table {
-  border-collapse: collapse;
-  table-layout: fixed;
+body main .book .bookHeader .headerBtn:hover {
+  filter: invert(67%) sepia(9%) saturate(1663%) hue-rotate(4deg) brightness(90%) contrast(83%);
 }
-body main #book table thead > td {
-  padding: 2px;
-}
-body main #book table .evenHours:hover, body main #book table .oddHours:hover {
-  cursor: pointer;
-  border: 2px solid #678A77;
-  box-shadow: 3px 3px 10px 0px rgb(0, 0, 0);
-}
-body main #book table .evenHours {
-  background-color: rgba(198, 214, 192, 0.7);
-}
-body main #book table .oddHours {
-  background-color: rgba(217, 217, 217, 0.7);
-}
-body main #book table #weekend td {
-  height: 20%;
-}
-body main #book table #tbodyCal-left > td, body main #book table #tbodyCal-right > td {
-  height: 5%;
-}
-body main #book #tableCal-sat, body main #book #tableCal-sun {
-  height: 50%;
-}
-body main #book #left-agenda, body main #book #right-agenda {
+body main .book .left-book, body main .book .right-book {
   width: 40%;
   aspect-ratio: 861/1160;
 }
-body main #book #left-agenda {
+body main .book .left-book {
   margin: 5% 2.5% 5% 7.5%;
 }
-body main #book #left-agenda #tableCal-left {
-  height: 95%;
-}
-body main #book #right-agenda {
+body main .book .right-book {
   margin: 5% 7.5% 5% 2.5%;
   display: flex;
 }
-body main nav {
-  width: 100%;
-  aspect-ratio: 1722/135;
-  display: flex;
-}
-body main nav > div {
-  height: 100%;
-}
-body main nav div:nth-child(1) {
-  aspect-ratio: 380/67;
-}
-body main nav div:nth-child(2) {
-  aspect-ratio: 40/67;
-  cursor: pointer;
-}
-body main nav div:nth-child(3) {
-  aspect-ratio: 110/67;
-}
-body main nav div:nth-child(4) {
-  aspect-ratio: 80/67;
-}
-body main nav div:nth-child(4) > a {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-}
-body main nav div:nth-child(5) {
-  aspect-ratio: 244/67;
-}
-
-.invisible {
-  display: none;
-}
-
-#overlay {
+body #overlay {
   height: 100%;
   width: 100%;
   background-color: rgba(132, 132, 130, 0.7);
   position: absolute;
 }
-#overlay > section {
+body #overlay > section {
   position: relative;
   height: 47vh;
   width: 60vw;
@@ -197,27 +206,27 @@ body main nav div:nth-child(5) {
   border-radius: 4px;
   padding: 2%;
 }
-#overlay > section > div {
+body #overlay > section > div {
   height: 7%;
   width: 7%;
 }
-#overlay > section > div img {
+body #overlay > section > div img {
   object-fit: contain;
 }
-#overlay > section form {
+body #overlay > section form {
   height: 100%;
   padding: 0 5% 0%;
 }
-#overlay > section form label {
+body #overlay > section form label {
   color: #B2C8AF;
 }
-#overlay > section h1 {
+body #overlay > section h1 {
   color: #678A77;
 }
-#overlay > section input {
+body #overlay > section input {
   border: 0px solid;
 }
-#overlay > section input[type=submit] {
+body #overlay > section input[type=submit] {
   background-color: #B2C8AF;
   color: #E6F4F4;
   border-radius: 10%;
@@ -226,8 +235,139 @@ body main nav div:nth-child(5) {
   margin-bottom: 5px;
   cursor: pointer;
 }
-#overlay > section input[type=submit]:hover {
+body #overlay > section input[type=submit]:hover {
   background-color: #cfbb9b;
+}
+body #addClientSection {
+  z-index: 3;
+}
+body #addClientSection > form {
+  margin-top: 5%;
+}
+body #addClientSection > form label {
+  display: inline-block;
+  width: 30%;
+  text-align: right;
+}
+body #addClientSection > form input:not([type=submit]) {
+  width: 64%;
+}
+body #addClientSection > form > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-end;
+}
+body #addClientSection > form > div input[type=submit] {
+  width: fit-content;
+  margin: 1%;
+}
+body .closeBtn {
+  object-fit: contain;
+  filter: invert(100%) sepia(0%) saturate(3598%) hue-rotate(258deg) brightness(91%) contrast(86%);
+  height: 100%;
+  cursor: pointer;
+}
+body .closeBtn:hover {
+  filter: invert(52%) sepia(0%) saturate(0%) hue-rotate(234deg) brightness(99%) contrast(95%);
+}
+body .addBtnDiv {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  top: 7.5%;
+  bottom: 2.5%;
+  right: 2.5%;
+  height: 90%;
+}
+body .addBtnDiv .addBtn {
+  color: #D9D9D9;
+  height: 10%;
+  object-fit: contain;
+  filter: invert(100%) sepia(0%) saturate(3598%) hue-rotate(258deg) brightness(91%) contrast(86%);
+  position: absolute;
+}
+body .addBtnDiv .addBtn:hover {
+  cursor: pointer;
+  filter: invert(52%) sepia(0%) saturate(0%) hue-rotate(234deg) brightness(99%) contrast(95%);
+}
+
+body main {
+  background-image: url(../stylesheets/img/book.png);
+}
+body main .bookHeaderTitle {
+  margin-left: 0;
+}
+body main table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+body main table thead > td {
+  padding: 2px;
+}
+body main table .evenHours:hover, body main table .oddHours:hover {
+  cursor: pointer;
+  border: 2px solid #678A77;
+  box-shadow: 3px 3px 10px 0px rgb(0, 0, 0);
+}
+body main table .evenHours {
+  background-color: rgba(198, 214, 192, 0.7);
+}
+body main table .oddHours {
+  background-color: rgba(217, 217, 217, 0.7);
+}
+body main table #weekend td {
+  height: 20%;
+}
+body main table #tbodyCal-left > td, body main table #tbodyCal-right > td {
+  height: 5%;
+}
+body main #tableCal-sat, body main #tableCal-sun {
+  height: 50%;
+}
+body main #left-agenda, body main #right-agenda {
+  width: 40%;
+  aspect-ratio: 861/1160;
+}
+body main #left-agenda {
+  margin: 5% 2.5% 5% 7.5%;
+}
+body main #left-agenda #tableCal-left {
+  height: 95%;
+}
+body main #right-agenda {
+  margin: 5% 7.5% 5% 2.5%;
+  display: flex;
+}
+body nav {
+  width: 100%;
+  aspect-ratio: 1722/135;
+  display: flex;
+}
+body nav > div {
+  height: 100%;
+}
+body nav div:nth-child(1) {
+  aspect-ratio: 380/67;
+}
+body nav div:nth-child(2) {
+  aspect-ratio: 40/67;
+  cursor: pointer;
+}
+body nav div:nth-child(3) {
+  aspect-ratio: 110/67;
+}
+body nav div:nth-child(4) {
+  aspect-ratio: 80/67;
+}
+body nav div:nth-child(4) > a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+body nav div:nth-child(5) {
+  aspect-ratio: 244/67;
 }
 
 #addMeetSection {
@@ -274,31 +414,6 @@ body main nav div:nth-child(5) {
   font-size: 1em;
 }
 
-#addClientSection {
-  z-index: 3;
-}
-#addClientSection > form {
-  margin-top: 5%;
-}
-#addClientSection > form label {
-  display: inline-block;
-  width: 30%;
-  text-align: right;
-}
-#addClientSection > form input:not([type=submit]) {
-  width: 64%;
-}
-#addClientSection > form > div {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: flex-end;
-}
-#addClientSection > form > div input[type=submit] {
-  width: fit-content;
-  margin: 1%;
-}
-
 .yellow {
   background-color: yellow;
 }
@@ -335,42 +450,10 @@ body main nav div:nth-child(5) {
   width: 50%;
 }
 
-#meetBtnDiv {
-  width: 90%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  top: 7.5%;
-  bottom: 2.5%;
-  right: 2.5%;
-  height: 90%;
-}
-#meetBtnDiv #addMeetBtn {
-  color: #D9D9D9;
-  height: 10%;
-  object-fit: contain;
-  filter: invert(100%) sepia(0%) saturate(3598%) hue-rotate(258deg) brightness(91%) contrast(86%);
-  position: absolute;
-}
-#meetBtnDiv #addMeetBtn:hover {
-  cursor: pointer;
-  filter: invert(52%) sepia(0%) saturate(0%) hue-rotate(234deg) brightness(99%) contrast(95%);
-}
-
 .flex {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.closeBtn {
-  object-fit: contain;
-  filter: invert(100%) sepia(0%) saturate(3598%) hue-rotate(258deg) brightness(91%) contrast(86%);
-  height: 100%;
-  cursor: pointer;
-}
-.closeBtn:hover {
-  filter: invert(52%) sepia(0%) saturate(0%) hue-rotate(234deg) brightness(99%) contrast(95%);
 }
 
 /*# sourceMappingURL=index.css.map */

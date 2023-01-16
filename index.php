@@ -28,23 +28,22 @@ if (!isset($_SESSION['loggedInUser'])) {
     <link rel="stylesheet" href="stylesheets/index.css">
     <title>Agenda</title>
 </head>
-<header id="logout">
+<header class="logout">
     <a type="button" href="includes/logout.php">Uitloggen</a>
 </header>
 <body>
 <main>
     <div>
-        <div id="book">
-            <section id="left-agenda">
-                <header id="agendaheader">
-                    <!--                <button id="todayBtn">Vandaag</button>-->
+        <div class="book">
+            <section class="left-book">
+                <header class="bookHeader">
                     <div>
-                        <img src="stylesheets/icon/arrow-left-solid.svg" id="prevBtn" data-offset="-1"/>
+                        <img src="stylesheets/icon/arrow-left-solid.svg" id="prevBtnAgenda" data-offset="-1" class="headerBtn"/>
                         <div>
                             <div>
-                                <p id="weeknr"></p>
-                                <img src="stylesheets/icon/square-caret-down-solid.svg" id="weeknrSelect"/>
-                                <img src="stylesheets/icon/xmark-solid.svg" id="weeknrExit"/>
+                                <p id="weeknr" class="bookHeaderTitle flex"></p>
+                                <img src="stylesheets/icon/square-caret-down-solid.svg" id="weeknrSelect" class="headerBtn"/>
+                                <img src="stylesheets/icon/xmark-solid.svg" id="weeknrExit" class="headerBtn"/>
                             </div>
                             <form id="weeknrForm">
                                 <label for="weeknrInput">Week</label>
@@ -54,7 +53,7 @@ if (!isset($_SESSION['loggedInUser'])) {
                                 <button id="weeknrSubmit">OK</button>
                             </form>
                         </div>
-                        <img src="stylesheets/icon/arrow-right-solid.svg" id="nextBtn" data-offset="1"/>
+                        <img src="stylesheets/icon/arrow-right-solid.svg" id="nextBtnAgenda" data-offset="1" class="headerBtn"/>
                     </div>
                 </header>
 
@@ -93,8 +92,8 @@ if (!isset($_SESSION['loggedInUser'])) {
             <div></div>
         </nav>
     </div>
-    <div id="meetBtnDiv">
-        <img src="stylesheets/icon/circle-plus-solid.svg" id="addMeetBtn"/>
+    <div class="addBtnDiv" id="meetBtnDiv">
+        <img src="stylesheets/icon/circle-plus-solid.svg" id="addMeetBtn" class="addBtn"/>
     </div>
 </main>
 

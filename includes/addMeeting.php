@@ -40,6 +40,7 @@ if (new DateTime($beginTime) < new DateTime()) {
 $timeslotsQuery = $connection->prepare("SELECT * FROM `timeslots` WHERE :beginTime <= `end_time` AND :endTime >= `begin_time` ");
 $timeslotsQuery->execute([':beginTime' => $beginTime, ':endTime' => $endTime]);
 $overlapSlot = $timeslotsQuery->fetchAll(PDO::FETCH_CLASS, "\\RS\\Timeslot");
+print_r($overlapSlot);
 
 if (count($overlapSlot) > 0) {
     $meetDateError = "Meeting overlapt! ";

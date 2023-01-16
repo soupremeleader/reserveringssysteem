@@ -1,238 +1,104 @@
 @import './base';
+@import './_bookBase';
 
 body {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  #logout {
-    width: 100%;
-    display: flex;
-    align-self: flex-start;
-    text-align: right;
-    justify-content: flex-end;
-
-    > a {
-      margin-top: 1.5%;
-      margin-right: 2%;
-      color: $buttonGreen;
-      font-family: HackBold;
-      text-decoration-line: underline;
-      font-size: 0.8em;
-      cursor: pointer;
-
-      &:hover {
-        color: $gold;
-      }
-    }
-  }
-
   main {
-    top: 7.5%;
-    bottom: 2.5%;
-    height: 90%;
-    aspect-ratio: 1722/1326;
-    position: absolute;
     background-image: url(../stylesheets/img/book.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-    display: flex;
-    flex-direction: column;
 
-    #book {
-      width: 100%;
-      aspect-ratio: 1722/1192;
-      display: flex;
+    .bookHeaderTitle {
+      margin-left: 0;
+    }
 
-      #agendaheader {
+    table {
+      border-collapse: collapse;
+      table-layout: fixed;
+
+      thead > td {
+        padding: 2px;
+      }
+
+      .evenHours:hover, .oddHours:hover {
+        cursor: pointer;
+        border: 2px solid $darkGreen;
+        box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 1);
+      }
+
+      .evenHours {
+        background-color: $appointmentGreen;
+      }
+
+      .oddHours {
+        background-color: $appointmentGrey;
+      }
+
+      #weekend td {
+        height: 20%;
+      }
+
+      #tbodyCal-left > td, #tbodyCal-right > td {
         height: 5%;
-        width: 90%;
-
-        div {
-          height: 100%;
-          display: flex;
-        }
-
-        > div > div {
-          flex-direction: column;
-          width: 100%;
-
-          #weeknr {
-            display: flex;
-            align-items: center;
-            margin: 0;
-            height: 100%;
-            width: 85%;
-            color: $buttonGreen;
-            font-family: HackBold;
-            cursor: default;
-          }
-        }
-
-        #prevBtn, #nextBtn, #weeknrSelect, #weeknrExit {
-          object-fit: contain;
-          filter: invert(48%) sepia(32%) saturate(272%) hue-rotate(95deg) brightness(99%) contrast(86%);
-          height: 100%;
-          cursor: pointer;
-        }
-
       }
 
-      table {
-        border-collapse: collapse;
-        table-layout: fixed;
 
-        thead > td {
-          padding: 2px;
-        }
+    }
 
-        .evenHours:hover, .oddHours:hover {
-          cursor: pointer;
-          border: 2px solid $darkgreen;
-          box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 1);
-        }
+    #tableCal-sat, #tableCal-sun {
+      height: 50%;
+    }
 
-        .evenHours {
-          background-color: $appointmentGreen;
-        }
+    #left-agenda, #right-agenda {
+      width: 40%;
+      aspect-ratio: 861/1160;
+    }
 
-        .oddHours {
-          background-color: $appointmentGrey;
-        }
+    #left-agenda {
+      margin: 5% 2.5% 5% 7.5%;
 
-        #weekend td {
-          height: 20%;
-        }
-
-        #tbodyCal-left > td, #tbodyCal-right > td {
-          height: 5%;
-        }
-
-
-      }
-
-      #tableCal-sat, #tableCal-sun {
-        height: 50%;
-      }
-
-      #left-agenda, #right-agenda {
-        width: 40%;
-        aspect-ratio: 861/1160;
-      }
-
-      #left-agenda {
-        margin: 5% 2.5% 5% 7.5%;
-
-        #tableCal-left {
-          height: 95%;
-        }
-      }
-
-      #right-agenda {
-        margin: 5% 7.5% 5% 2.5%;
-        display: flex;
+      #tableCal-left {
+        height: 95%;
       }
     }
 
-    nav {
-      width: 100%;
-      aspect-ratio: 1722/135;
+    #right-agenda {
+      margin: 5% 7.5% 5% 2.5%;
       display: flex;
-
-      > div {
-        height: 100%;
-      }
-
-      div:nth-child(1) {
-        aspect-ratio: 380/67;
-      }
-
-      div:nth-child(2) {
-        aspect-ratio: 40/67;
-        cursor: pointer;
-      }
-
-      div:nth-child(3) {
-        aspect-ratio: 110/67;
-      }
-
-      div:nth-child(4) {
-        aspect-ratio: 80/67;
-
-        > a {
-          display: inline-block;
-          width: 100%;
-          height: 100%;
-        }
-      }
-
-      div:nth-child(5) {
-        aspect-ratio: 244/67;
-      }
     }
   }
-}
 
-.invisible {
-  display: none;
-}
-
-
-#overlay {
-  height: 100%;
-  width: 100%;
-  background-color: $overlay;
-  position: absolute;
-
-  > section {
-    position: relative;
-    height: 47vh;
-    width: 60vw;
-    background-color: $background;
-    border: 2px solid $gold;
-    border-radius: 4px;
-    padding: 2%;
+  nav {
+    width: 100%;
+    aspect-ratio: 1722/135;
+    display: flex;
 
     > div {
-      height: 7%;
-      width: 7%;
-
-      img {
-        object-fit: contain;
-      }
-    }
-
-    form {
       height: 100%;
-      padding: 0 5% 0%;
-
-      label {
-        color: $limegreen;
-      }
     }
 
-    h1 {
-      color: $darkgreen;
+    div:nth-child(1) {
+      aspect-ratio: 380/67;
     }
 
-    input {
-      border: 0px solid;
-    }
-
-    input[type=submit] {
-      background-color: $limegreen;
-      color: $innerButton;
-      border-radius: 10%;
-      padding: 2%;
-      margin-top: 5px;
-      margin-bottom: 5px;
+    div:nth-child(2) {
+      aspect-ratio: 40/67;
       cursor: pointer;
+    }
 
-      &:hover {
-        background-color: $softGold;
+    div:nth-child(3) {
+      aspect-ratio: 110/67;
+    }
+
+    div:nth-child(4) {
+      aspect-ratio: 80/67;
+
+      > a {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
       }
+    }
+
+    div:nth-child(5) {
+      aspect-ratio: 244/67;
     }
   }
 }
@@ -291,34 +157,6 @@ body {
   }
 }
 
-#addClientSection {
-  z-index: 3;
-
-  > form {
-    margin-top: 5%;
-    label {
-      display: inline-block;
-      width: 30%;
-      text-align: right;
-    }
-
-    input:not([type=submit]) {
-      width: 64%;
-    }
-
-    > div {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      align-items: flex-end;
-
-      input[type=submit] {
-        width: fit-content;
-        margin: 1%;
-      }
-    }
-  }
-}
 
 .yellow {
   background-color: yellow;
@@ -356,47 +194,10 @@ body {
   width: 50%;
 }
 
-#meetBtnDiv {
-
-  width: 90%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-
-  top: 7.5%;
-  bottom: 2.5%;
-  right: 2.5%;
-  height: 90%;
-
-  #addMeetBtn {
-    color: $grey;
-    height: 10%;
-    object-fit: contain;
-    filter: invert(100%) sepia(0%) saturate(3598%) hue-rotate(258deg) brightness(91%) contrast(86%);
-    position: absolute;
-
-    &:hover {
-      cursor: pointer;
-      filter: invert(52%) sepia(0%) saturate(0%) hue-rotate(234deg) brightness(99%) contrast(95%);
-    }
-  }
-}
-
 .flex {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.closeBtn {
-  object-fit: contain;
-  filter: invert(100%) sepia(0%) saturate(3598%) hue-rotate(258deg) brightness(91%) contrast(86%);
-  height: 100%;
-  cursor: pointer;
-
-  &:hover {
-    filter: invert(52%) sepia(0%) saturate(0%) hue-rotate(234deg) brightness(99%) contrast(95%);
-  }
-
-}
 

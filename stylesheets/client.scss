@@ -1,39 +1,171 @@
-img {
-  .icon {
-    width: 20px;
-    height: 20px;
-    color: black;
-  }
+@import './base';
+@import './_bookBase';
 
-}
-
-td a {
-  width: 100%;
-  display: block;
-}
-
-td img {
-  cursor: pointer;
-}
 
 main {
-  position: absolute;
-  width: 100vw;
+  background-image: url(../stylesheets/img/contacts.png);
+
+  .bookHeader {
+    height: 10%;
+  }
+
+  .bookHeaderTitle {
+    margin-left: 2%;
+  }
+
+  form {
+    display: flex;
+    width: 100%;
+    height: 120%;
+
+    label {
+      display: inline-block;
+      height: 100%;
+      aspect-ratio: 1/1;
+      padding: 5px;
+
+      div {
+        aspect-ratio: 1/1;
+        height: 100%;
+
+        img {
+          object-fit: contain;
+        }
+      }
+    }
+
+    input {
+      display: inline-block;
+      width: 70%;
+      margin-left: 5%;
+    }
+  }
+
+
 }
 
-.invisible {
-  display: none;
+#left-content {
+  margin-top:8%;
+  height: 85%;
 }
 
-section {
-  position: absolute;
-  height: 50vh;
-  width: 50vw;
-  background-color: white;
-  border: 2px solid red;
-  margin: auto;
+#right-content {
+  height: 100%;
+  width: 100%;
 }
 
-#addClientSection {
-  z-index: 2;
+.oddContact {
+  background-color: $appointmentGrey;
 }
+
+.contactDivLeft {
+  height: 25%;
+}
+
+.contactDivRight {
+  height: 20%;
+}
+
+  .infoDiv {
+    height: 33%;
+    display: flex;
+    font-family: HackBold;
+    align-items: center;
+
+    .iconsDiv {
+      width: 30%;
+      display: flex;
+      .iconDiv {
+        aspect-ratio: 1/1;
+        width: 22%;
+
+        .crudIcons {
+          object-fit: contain;
+          filter: $goldFilter;
+          height: 80%;
+          width: 80%;
+          cursor: pointer;
+          margin: 10%;
+
+          &:hover {
+            filter: $darkGreyFilter;
+          }
+        }
+      }
+    }
+  }
+
+  .odd {
+    margin-left:auto;
+  }
+
+  .even {
+    margin-left:auto;
+  }
+
+  .contactInfo {
+    display: flex;
+    height: 33%;
+    align-items: center;
+    .contactIconDiv {
+      width: 8%;
+      margin: auto 0 auto;
+      .contactIcons {
+        object-fit: contain;
+        filter: $greenFilter;
+        height: 80%;
+        width: 80%;
+        margin: 10%;
+      }
+    }
+  }
+
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+//img {
+//  .icon {
+//    width: 20px;
+//    height: 20px;
+//    color: black;
+//  }
+//
+//}
+//
+//td {
+//  a {
+//    width: 100%;
+//    display: block;
+//  }
+//
+//  img {
+//    cursor: pointer;
+//  }
+//}
+//
+//  main {
+//    position: absolute;
+//    width: 100vw;
+//  }
+//
+//  .invisible {
+//    display: none;
+//  }
+//
+//  section {
+//    position: absolute;
+//    height: 50vh;
+//    width: 50vw;
+//    background-color: white;
+//    border: 2px solid red;
+//    margin: auto;
+//  }
+//
+//  #addClientSection {
+//    z-index: 2;
+//  }

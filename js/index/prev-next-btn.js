@@ -1,7 +1,6 @@
-let prevBtn = document.getElementById("prevBtn");
-let nextBtn = document.getElementById("nextBtn");
+let prevBtnAgenda = document.getElementById("prevBtnAgenda");
+let nextBtnAgenda = document.getElementById("nextBtnAgenda");
 let todayBtn = document.getElementById("todayBtn");
-
 
 function submitPrevNext(e) {
     tbodyL.removeEventListener('click', addTimeMeeting);
@@ -22,6 +21,7 @@ function resetOffset() {
     offsetWeek(0);
 }
 
-prevBtn.addEventListener('click', submitPrevNext);
-nextBtn.addEventListener('click', submitPrevNext);
+prevBtnAgenda.addEventListener('click', submitPrevNext);
+nextBtnAgenda.addEventListener('click', submitPrevNext);
 todayBtn.addEventListener('click', resetOffset);
+

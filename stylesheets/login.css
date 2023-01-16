@@ -36,6 +36,22 @@ body {
   color: #B19860;
 }
 
+.invisible {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.goldText {
+  color: #B19860;
+}
+
+.limeGreenText {
+  color: #B2C8AF;
+}
+
 body {
   display: flex;
   justify-content: center;

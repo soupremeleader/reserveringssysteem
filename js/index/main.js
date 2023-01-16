@@ -110,8 +110,8 @@ function exitClient() {
     document.getElementById("addClientSection").classList.add("invisible");
 }
 
-let prevBtn = document.getElementById("prevBtn");
-let nextBtn = document.getElementById("nextBtn");
+let prevBtn = document.getElementById("prevBtnAgenda");
+let nextBtn = document.getElementById("nextBtnAgenda");
 
 let weeknrSelect = document.getElementById("weeknrSelect");
 let weeknrExit = document.getElementById("weeknrExit");

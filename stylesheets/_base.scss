@@ -1,5 +1,6 @@
 @import './variables';
 
+
 body {
   position: relative;
   margin: 0;
@@ -26,4 +27,20 @@ body {
   &::placeholder {
     color: $gold;
   }
+}
+
+.invisible {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.goldText {
+  color: $gold;
+}
+
+.limeGreenText {
+  color: $limegreen;
 }
