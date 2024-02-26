@@ -3,14 +3,14 @@ $clientError = "";
 $phoneRegex = "/^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$/";
 
 if (isset($_POST['clientSbmt'])) {
-    $clientName = $_POST['clientName'];
-    $clientPhone = $_POST['clientPhone'];
-    $clientEmail = $_POST['clientEmail'];
+    $clientName = htmlentities($_POST['clientName']);
+    $clientPhone = htmlentities($_POST['clientPhone']);
+    $clientEmail = htmlentities($_POST['clientEmail']);
 
     $existingClient = $connection->prepare("SELECT `name` FROM `clients` WHERE `name` LIKE :clientName");
     $existingClient->execute([':clientName' => $clientName]);
     $countClient = $existingClient->fetch();
-    print_r($countClient);
+//    print_r($countClient);
 
     if ($clientName == "") {
         $clientError = "Vul naam van klant in!";
@@ -27,6 +27,6 @@ if (isset($_POST['clientSbmt'])) {
     } else {
         $newClient = $connection->prepare("INSERT INTO `clients` (`name`, `phonenumber`, `email`) VALUES (:clientName, :clientPhone, :clientEmail)");
         $newClient->execute([':clientName' => $clientName, ':clientPhone' => $clientPhone, ':clientEmail' => $clientEmail]);
-        print_r($connection->query("SELECT * FROM `clients`")->fetchAll(PDO::FETCH_CLASS, "\\RS\\Client"));
+//        print_r($connection->query("SELECT * FROM `clients`")->fetchAll(PDO::FETCH_CLASS, "\\RS\\Client"));
     }
 }

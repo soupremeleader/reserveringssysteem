@@ -42,10 +42,19 @@ function createNameDiv(contactDiv, client, odd) {
     editIcon.classList.add("crudIcons");
     editIconDiv.appendChild(editIcon);
 
+    editIcon.dataset.name = client.name;
+    editIcon.dataset.phone = client.phonenumber;
+    editIcon.dataset.email = client.email;
+
+    editIcon.addEventListener('click', editClient)
+
     let deleteIcon = document.createElement("img");
     deleteIcon.src = "stylesheets/icon/trash-can-regular.svg";
     deleteIcon.classList.add("crudIcons");
     deleteIconDiv.appendChild(deleteIcon);
+
+    deleteIcon.addEventListener('click', deleteClient);
+    deleteIcon.dataset.name = client.name;
 
     if (odd) {
         nameDiv.appendChild(iconDiv);

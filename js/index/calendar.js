@@ -22,6 +22,7 @@ function getMeeting(offset) {
             })
         }).then(res => res.json()).then(meetings => {
         createCalendar(offset, meetings)
+        addMeetingEvents();
     })
 }
 
@@ -189,19 +190,50 @@ function createCalendar(offset, meetings) {
             }
 
 
+            for (let k = 0; k < meetings.length; k++) {
+                if (new Date(meetings[k].begin_time).getDay() === j + 1 && new Date(meetings[k].begin_time).getHours() === i) {
+                    let timeDiv = document.createElement("div");
+                    let nameDiv = document.createElement("div");
 
-            // if (new Date(meetings[0].begin_time).getDay() === j + 1 && new Date(meetings[0].begin_time).getHours() === i) {
-            //     newTd.classList.add("yellow");
-            //     meetings.shift();
-            // } else if (new Date(meetings[0].begin_time).getDay() === 0 && j === 6 && new Date(meetings[0].begin_time).getHours() === i) {
-            //     newTd.classList.add("yellow");
-            //     meetings.shift();
-            // }
+                    newTd.appendChild(timeDiv);
+                    newTd.appendChild(nameDiv);
 
-            // }
-            // console.log(meetings);
+                    newTd.classList.add("yellow");
+                    newTd.classList.remove("evenHours");
+                    newTd.classList.remove("oddHours");
+                    timeDiv.classList.add("timeColour");
 
+                    timeDiv.innerText = `${new Date(meetings[k].begin_time).getHours()}:${new Date(meetings[k].begin_time).getMinutes()<10?'0':''}${new Date(meetings[k].begin_time).getMinutes()}-${new Date(meetings[k].end_time).getHours()}:${new Date(meetings[k].end_time).getMinutes()}`
+                    nameDiv.innerText = meetings[k].name;
 
+                    newTd.dataset.name = meetings[k].name;
+                    newTd.dataset.beginTime = meetings[k].begin_time;
+                    newTd.dataset.endTime = meetings[k].end_time;
+                    newTd.dataset.notes = meetings[k].extra_notes;
+                    k++;
+                } else if (new Date(meetings[k].begin_time).getDay() === 0 && j === 6 && new Date(meetings[k].begin_time).getHours() === i) {
+                    let timeDiv = document.createElement("div");
+                    let nameDiv = document.createElement("div");
+
+                    newTd.appendChild(timeDiv);
+                    newTd.appendChild(nameDiv);
+
+                    newTd.classList.add("yellow");
+                    newTd.classList.remove("evenHours");
+                    newTd.classList.remove("oddHours");
+                    timeDiv.classList.add("timeColour");
+
+                    timeDiv.innerText = `${new Date(meetings[k].begin_time).getHours()}:${new Date(meetings[k].begin_time).getMinutes()<10?'0':''}${new Date(meetings[k].begin_time).getMinutes()}-${new Date(meetings[k].end_time).getHours()}:${new Date(meetings[k].end_time).getMinutes()}`
+                    nameDiv.innerText = meetings[k].name;
+
+                    newTd.dataset.name = meetings[k].name;
+                    newTd.dataset.beginTime = meetings[k].begin_time;
+                    newTd.dataset.endTime = meetings[k].end_time;
+                    newTd.dataset.notes = meetings[k].extra_notes;
+
+                    k++;
+                }
+            }
         }
     }
 

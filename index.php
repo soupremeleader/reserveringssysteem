@@ -17,8 +17,8 @@ if (!isset($_SESSION['loggedInUser'])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script type="text/javascript" src="js/index/addMeetingVisibility.js" defer></script>
     <script type="text/javascript" src="js/index/calendar.js" defer></script>
+    <script type="text/javascript" src="js/index/addMeetingVisibility.js" defer></script>
     <script type="text/javascript" src="js/index/prev-next-btn.js" defer></script>
     <script type="text/javascript" src="js/index/addClientVisibility.js" defer></script>
     <script type="text/javascript" src="js/index/selectWeekNr.js" defer></script>
@@ -38,11 +38,13 @@ if (!isset($_SESSION['loggedInUser'])) {
             <section class="left-book">
                 <header class="bookHeader">
                     <div>
-                        <img src="stylesheets/icon/arrow-left-solid.svg" id="prevBtnAgenda" data-offset="-1" class="headerBtn"/>
+                        <img src="stylesheets/icon/arrow-left-solid.svg" id="prevBtnAgenda" data-offset="-1"
+                             class="headerBtn"/>
                         <div>
                             <div>
                                 <p id="weeknr" class="bookHeaderTitle flex"></p>
-                                <img src="stylesheets/icon/square-caret-down-solid.svg" id="weeknrSelect" class="headerBtn"/>
+                                <img src="stylesheets/icon/square-caret-down-solid.svg" id="weeknrSelect"
+                                     class="headerBtn"/>
                                 <img src="stylesheets/icon/xmark-solid.svg" id="weeknrExit" class="headerBtn"/>
                             </div>
                             <form id="weeknrForm">
@@ -53,7 +55,8 @@ if (!isset($_SESSION['loggedInUser'])) {
                                 <button id="weeknrSubmit">OK</button>
                             </form>
                         </div>
-                        <img src="stylesheets/icon/arrow-right-solid.svg" id="nextBtnAgenda" data-offset="1" class="headerBtn"/>
+                        <img src="stylesheets/icon/arrow-right-solid.svg" id="nextBtnAgenda" data-offset="1"
+                             class="headerBtn"/>
                     </div>
                 </header>
 
@@ -155,6 +158,39 @@ if (!isset($_SESSION['loggedInUser'])) {
             <div>
                 <input type="submit" name="clientSbmt" value="Voeg toe"/>
             </div>
+        </form>
+    </section>
+
+    <section id="editClientSection">
+        <div>
+            <img src="stylesheets/icon/circle-xmark-solid.svg" id="exitEditMeetBtn" class="closeBtn"/>
+        </div>
+        <form method="post" class="greyInput">
+            <h1>Afspraak bewerken</h1>
+            <?php if ($meetNameError != "") {
+                echo $meetNameError . "<br>";
+            }
+            ?>
+            <div id="clientEditInput">
+                <label for="meetEditClient">Klant </label>
+                <input list="dataEditClients" id="meetEditClient" name="meetEditClient" required/>
+                <datalist id="dataEditClients"></datalist>
+            </div>
+            <?php if ($meetDateError != "") {
+                echo $meetDateError . "<br>";
+            }
+            ?>
+            <div id="datumEditInput">
+                <label for="meetEditDate">Datum</label>
+                <input id="meetEditDate" name="meetEditDate" type="date" required/>
+                <label for="beginTimeslotEdit">Van</label>
+                <input type="time" name="beginTimeslotEdit" id="beginTimeslotEdit" required/>
+                <label for="endTimeslotEdit">tot</label>
+                <input type="time" name="endTimeslotEdit" id="endTimeslotEdit" required/>
+                <input type="submit" value="OK" name="submitMeetingEdit"/><br/>
+            </div>
+            <label for="notesEdit"><h2>Extra notities</h2></label>
+            <textarea name="notesEdit" rows="4" cols="50" id="notesEdit"></textarea><br/>
         </form>
     </section>
 </div>

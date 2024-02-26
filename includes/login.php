@@ -14,8 +14,8 @@ if (isset($_POST['submit'])) {
      * @var \PDO $db
      * @var \PDO $connection
      */
-    $givenUN = $_POST['username'];
-    $givenPW = $_POST['password'];
+    $givenUN = htmlentities($_POST['username']);
+    $givenPW = htmlentities($_POST['password']);
 
     $loginQuery = $connection->prepare("SELECT * FROM `users` WHERE `username`=:username");
     $loginQuery->execute([':username' => $givenUN]);

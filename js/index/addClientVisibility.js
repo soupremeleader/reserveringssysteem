@@ -4,8 +4,9 @@ let addClientSection = document.getElementById("addClientSection");
 let addMeetSection = document.getElementById("addMeetSection");
 let overlay = document.getElementById("overlay");
 
-function addClient() {
+function addClient(e) {
     console.log("hello");
+    // e.stopPropagation();
     addClientSection.classList.remove("invisible");
     if (addMeetSection !== null) {
         addMeetSection.classList.add("invisible");

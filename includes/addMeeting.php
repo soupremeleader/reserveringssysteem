@@ -5,11 +5,11 @@ $meetDateError = "";
 if (isset($_POST['submitMeeting'])) {
     /** @var /PDO $connection
      */
-    $meetClient = $_POST['meetClient'];
-    $meetDate = $_POST['meetDate'];
-    $beginTimeslot = $_POST['beginTimeslot'];
-    $endTimeslot = $_POST['endTimeslot'];
-    $notes = $_POST['notes'];
+    $meetClient = htmlentities($_POST['meetClient']);
+    $meetDate = htmlentities($_POST['meetDate']);
+    $beginTimeslot = htmlentities($_POST['beginTimeslot']);
+    $endTimeslot = htmlentities($_POST['endTimeslot']);
+    $notes = htmlentities($_POST['notes']);
 
     $beginTime = date('Y-m-d H:i:s', strtotime($meetDate . $beginTimeslot));
     $endTime = date('Y-m-d H:i:s', strtotime($meetDate . $endTimeslot));

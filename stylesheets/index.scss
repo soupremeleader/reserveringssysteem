@@ -42,8 +42,18 @@ body {
 
     }
 
-    #tableCal-sat, #tableCal-sun {
+    #weekend {
       height: 50%;
+      width: 30%;
+    }
+
+    #tableCal-sat, #tableCal-sun {
+      height: 100%;
+      width: 100%;
+      #tbodyCal-sat, #tbodyCal-sun {
+        height: 85%;
+        width: 100%;
+      }
     }
 
     #left-agenda, #right-agenda {
@@ -103,6 +113,10 @@ body {
   }
 }
 
+#tableCal-left {
+  height: 90%;
+}
+
 #addMeetSection {
   z-index: 2;
 
@@ -159,7 +173,18 @@ body {
 
 
 .yellow {
-  background-color: yellow;
+  background-color: $lightGold;
+  cursor: pointer;
+  border: solid 2px $gold;
+  font-size: 0.6em;
+  color: $darkGreen;
+  &:hover {
+    box-shadow: 3px 3px 10px 0px rgb(0, 0, 0);
+  }
+}
+
+.timeColour {
+  color: $gold;
 }
 
 .dateTxt {

@@ -323,8 +323,17 @@ body main table #weekend td {
 body main table #tbodyCal-left > td, body main table #tbodyCal-right > td {
   height: 5%;
 }
-body main #tableCal-sat, body main #tableCal-sun {
+body main #weekend {
   height: 50%;
+  width: 30%;
+}
+body main #tableCal-sat, body main #tableCal-sun {
+  height: 100%;
+  width: 100%;
+}
+body main #tableCal-sat #tbodyCal-sat, body main #tableCal-sat #tbodyCal-sun, body main #tableCal-sun #tbodyCal-sat, body main #tableCal-sun #tbodyCal-sun {
+  height: 85%;
+  width: 100%;
 }
 body main #left-agenda, body main #right-agenda {
   width: 40%;
@@ -368,6 +377,10 @@ body nav div:nth-child(4) > a {
 }
 body nav div:nth-child(5) {
   aspect-ratio: 244/67;
+}
+
+#tableCal-left {
+  height: 90%;
 }
 
 #addMeetSection {
@@ -415,7 +428,18 @@ body nav div:nth-child(5) {
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: #E1D8BF;
+  cursor: pointer;
+  border: solid 2px #B19860;
+  font-size: 0.6em;
+  color: #678A77;
+}
+.yellow:hover {
+  box-shadow: 3px 3px 10px 0px rgb(0, 0, 0);
+}
+
+.timeColour {
+  color: #B19860;
 }
 
 .dateTxt {
